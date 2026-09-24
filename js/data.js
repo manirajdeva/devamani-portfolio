@@ -278,6 +278,32 @@ const projects = [
     results: [
       "[RESULT / METRIC — add once available, e.g. query performance improvement from the redesigned Views]"
     ]
+  },
+  {
+    id: "viharasetu-website",
+    title: "ViharaSetu Website",
+    client: "Personal Project — ViharaSetu",
+    role: "Web Developer / Founder",
+    duration: "2026",
+    image: "assets/images/viharasetu/viharasetu-cover.jpg",
+    tags: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Claude AI"],
+    problem: "ViharaSetu needed its own live, public-facing travel website on a real domain — separate from this personal portfolio — where travelers could learn about the brand, browse trip categories and get in touch directly.",
+    solution: "Designed and built a full travel website for ViharaSetu from scratch using HTML, CSS and JavaScript in VS Code, working with Claude as an AI coding assistant, then published it live on the custom domain viharasetu.co.in.",
+    architecture: "Static HTML/CSS/JS site developed in VS Code with Claude as a coding assistant → version-controlled with Git and pushed to GitHub → deployed via GitHub Pages → custom domain (viharasetu.co.in) connected through DNS.",
+    responsibilities: [
+      "Designed and built the site end-to-end using HTML, CSS and JavaScript",
+      "Built out the ViharaSetu brand story and vision — a bridge between travelers and meaningful destinations",
+      "Structured trip categories: Travel Packages, Spiritual Journeys, Cultural Experiences, Trekking & Adventure, Customized Trips and Heritage Travel",
+      "Built a destination/photo gallery to showcase trips visually",
+      "Added a contact and inquiry section with email, phone and social details for travelers to reach out",
+      "Made the site fully responsive for mobile and desktop",
+      "Used Claude AI as a coding assistant within VS Code to speed up development",
+      "Set up GitHub Pages hosting and connected the custom domain viharasetu.co.in"
+    ],
+    results: [
+      "Live and publicly accessible at viharasetu.co.in",
+      "Gives ViharaSetu an independent web presence for showcasing trips and receiving traveler inquiries"
+    ]
   }
   // Add more projects following the same structure.
 ];
