@@ -176,18 +176,60 @@ const travelStories = [
    ----------------------------------------------------------------------- */
 const trekkingStories = [
   {
-    id: "himalayan-trek",
-    title: "Himalayan Trek",
-    location: "[TREK LOCATION]",
+    id: "kedarnath-trek",
+    title: "Kedarnath Trek",
+    location: "Kedarnath, Uttarakhand",
+    date: "June 2022",
+    difficulty: "Moderate",
+    distance: "16 km",
+    duration: "5 Days",
+    altitude: "11,762 ft",
+    tags: ["Trekking", "Himalayas", "Spiritual"],
+    image: "assets/images/trekking/trek-kedarnath.jpg",
+    description: "A 5-day Char Dham-style yatra from Haridwar via Devprayag and Guptkashi, trekking from Gaurikund to the Kedarnath Temple at 3,584 m.",
+    storyPage: "stories/kedarnath-trek.html"
+  },
+  {
+    id: "sivagange-hills-trek",
+    title: "Sivagange Hills Trek",
+    location: "Sivagange, near Dobbaspet, Karnataka",
+    date: "2026",
+    difficulty: "Easy-Moderate",
+    distance: "3–6 km",
+    duration: "1 Day",
+    altitude: "4,488 ft",
+    tags: ["Trekking", "Karnataka", "Hills"],
+    image: "assets/images/trekking/sivagange-viewpoint.jpg",
+    description: "A one-day pilgrimage-hill trek 50–60 km from Bengaluru, known as \"Dakshina Kashi\" — one I've returned to three times.",
+    storyPage: "stories/sivagange-hills-trek.html"
+  },
+  {
+    id: "netravathi-peak-trek",
+    title: "Netravathi Peak Trek",
+    location: "Samse, Chikmagaluru, Karnataka",
     date: "2026",
     difficulty: "Moderate",
+    distance: "12–16 km",
+    duration: "3 Days",
+    altitude: "4,987 ft",
+    tags: ["Trekking", "Karnataka", "Western Ghats"],
+    image: "assets/images/trekking/trek-netravathi.jpg",
+    description: "A 3-day trip from Bengaluru through Chikmagaluru's coffee country to Netravati Peak — forest trails opening into shola grasslands and ridge-top views.",
+    storyPage: "stories/netravathi-peak-trek.html"
+  },
+  {
+    id: "z-point-trek",
+    title: "Z Point Trek",
+    location: "Kudremukh, Karnataka",
+    date: "2026",
+    difficulty: "Moderate-Difficult",
     distance: "[DISTANCE] km",
-    duration: "[X] Days",
+    duration: "1 Day",
     altitude: "[MAX ALTITUDE] ft",
-    tags: ["Trekking", "Himalayas", "Adventure"],
-    image: "assets/images/trekking/trek-01.jpg",
-    description: "A demanding but rewarding climb through pine forests, ridgelines and high-altitude passes.",
-    storyPage: "stories/himalayan-trek.html"
+    tags: ["Trekking", "Karnataka", "Western Ghats"],
+    image: "assets/images/trekking/trek-zpoint.jpg",
+    description: "A grassy, rolling-hills trek in Kudremukh National Park leading up to one of Karnataka's most rewarding viewpoints.",
+    storyPage: "stories/z-point-trek.html"
   }
   // Add more treks below following the same structure.
 ];
@@ -316,7 +358,7 @@ const projects = [
 const galleryImages = [
   { src: "assets/images/gallery/insta/gallery-13.jpg", category: "Travel", caption: "Kerala Backwaters" },
   { src: "assets/images/gallery/insta/gallery-14.jpg", category: "Memories", caption: "Friends in the Hills" },
-  { src: "assets/images/gallery/insta/gallery-15.jpg", category: "Memories", caption: "Monkey Business at the Viewpoint" },
+  { src: "assets/images/gallery/insta/gallery-15.jpg", category: "Trekking", caption: "Sivagange Hills Trek" },
   { src: "assets/images/gallery/insta/gallery-16.jpg", category: "Memories", caption: "Hilltop with the Crew" },
   { src: "assets/images/gallery/insta/gallery-17.jpg", category: "Mountains", caption: "Family in the Mountains" },
   { src: "assets/images/gallery/insta/gallery-18.jpg", category: "Memories", caption: "Festival Night with Friends" },
