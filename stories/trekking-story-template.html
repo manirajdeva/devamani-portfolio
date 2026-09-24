@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[TREK NAME] — Trekking Journal — T Devamani Raju</title>
+<meta name="description" content="[SHORT DESCRIPTION OF THE TREK]">
+<meta property="og:title" content="[TREK NAME] — Trekking Journal">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!--
+  =============================================================
+  TREKKING STORY TEMPLATE
+  Copy this file into /stories/ with a new name, fill in the
+  placeholders, then add a matching entry to `trekkingStories`
+  in js/data.js pointing storyPage to this file.
+  Write this one with feeling — it should read like a story,
+  not a spec sheet.
+  =============================================================
+-->
+
+<header class="site-header">
+  <div class="container navbar">
+    <a href="../index.html" class="logo">T Devamani Raju<span>.</span></a>
+    <nav class="nav-links" id="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../career.html">Career</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../viharasetu.html">ViharaSetu</a>
+      <a href="../travel.html">Travel</a>
+      <a href="../trekking.html">Trekking</a>
+      <a href="../life.html">Life</a>
+      <a href="../gallery.html">Gallery</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../resume.html" class="btn btn-accent btn-sm nav-cta">Resume</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="story-hero">
+  <img src="../assets/images/trekking/[TREK_IMAGE].jpg" alt="[TREK NAME]">
+  <div class="container story-hero-content">
+    <p class="breadcrumb"><a href="../trekking.html">Trekking Journal</a> / [TREK NAME]</p>
+    <h1>[TREK NAME]</h1>
+    <div class="story-meta-bar">
+      <span><i class="fa-solid fa-location-dot"></i> [LOCATION]</span>
+      <span><i class="fa-solid fa-mountain"></i> [MAX ALTITUDE]</span>
+      <span><i class="fa-solid fa-gauge-high"></i> [DIFFICULTY]</span>
+    </div>
+  </div>
+</section>
+
+<article class="story-body">
+
+  <div class="quick-facts reveal">
+    <div class="quick-fact"><i class="fa-solid fa-gauge-high"></i><span class="fact-label">Difficulty</span><span class="fact-value">[DIFFICULTY]</span></div>
+    <div class="quick-fact"><i class="fa-solid fa-ruler"></i><span class="fact-label">Distance</span><span class="fact-value">[DISTANCE]</span></div>
+    <div class="quick-fact"><i class="fa-solid fa-mountain"></i><span class="fact-label">Max Altitude</span><span class="fact-value">[ALTITUDE]</span></div>
+    <div class="quick-fact"><i class="fa-regular fa-clock"></i><span class="fact-label">Duration</span><span class="fact-value">[DURATION]</span></div>
+    <div class="quick-fact"><i class="fa-solid fa-cloud-sun"></i><span class="fact-label">Weather</span><span class="fact-value">[WEATHER]</span></div>
+  </div>
+
+  <h2>Preparation</h2>
+  <p>[Describe how you trained and prepared, mentally and physically, for this trek.]</p>
+
+  <h2>What I Carried</h2>
+  <ul>
+    <li>[Gear item 1]</li>
+    <li>[Gear item 2]</li>
+    <li>[Gear item 3]</li>
+  </ul>
+
+  <h2>Day 1</h2>
+  <p>[Tell the story of Day 1 — the start, the terrain, how you felt.]</p>
+
+  <h2>Day 2</h2>
+  <p>[Tell the story of Day 2.]</p>
+
+  <h2>Day 3</h2>
+  <p>[Tell the story of Day 3. Add more day sections as needed for longer treks.]</p>
+
+  <div class="info-box">
+    <h4><i class="fa-solid fa-triangle-exclamation"></i> Difficult Moments</h4>
+    <p>[The hardest part of the trek — physically or mentally.]</p>
+  </div>
+
+  <div class="info-box">
+    <h4><i class="fa-solid fa-mountain-sun"></i> Best View</h4>
+    <p>[Describe the most breathtaking view of the trek.]</p>
+  </div>
+
+  <h2>Most Memorable Moment</h2>
+  <p>[The one moment from the trek you'll never forget.]</p>
+
+  <h2>Lessons From the Trek</h2>
+  <p>[What this trek taught you — about yourself, resilience, or life in general.]</p>
+
+  <div class="info-box">
+    <h4><i class="fa-solid fa-lightbulb"></i> Trek Tips</h4>
+    <ul>
+      <li>[Tip 1]</li>
+      <li>[Tip 2]</li>
+      <li>[Tip 3]</li>
+    </ul>
+  </div>
+
+  <h2>Photo Gallery</h2>
+  <div class="story-gallery">
+    <img src="../assets/images/trekking/[IMG1].jpg" alt="[TREK NAME] photo 1" loading="lazy">
+    <img src="../assets/images/trekking/[IMG2].jpg" alt="[TREK NAME] photo 2" loading="lazy">
+    <img src="../assets/images/trekking/[IMG3].jpg" alt="[TREK NAME] photo 3" loading="lazy">
+    <img src="../assets/images/trekking/[IMG4].jpg" alt="[TREK NAME] photo 4" loading="lazy">
+  </div>
+
+  <h2>Route / Map</h2>
+  <div class="map-placeholder">
+    <i class="fa-solid fa-route"></i>
+    <span>[Embed a route map or GPX visualization here]</span>
+  </div>
+
+  <h2>Final Thoughts</h2>
+  <p>[Closing reflection on the trek.]</p>
+
+  <div class="story-nav">
+    <a href="#" class="prev">
+      <span class="story-nav-label"><i class="fa-solid fa-arrow-left"></i> Previous Trek</span>
+      <span class="story-nav-title">[PREVIOUS TREK TITLE]</span>
+    </a>
+    <a href="#" class="next">
+      <span class="story-nav-label">Next Trek <i class="fa-solid fa-arrow-right"></i></span>
+      <span class="story-nav-title">[NEXT TREK TITLE]</span>
+    </a>
+  </div>
+
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 T Devamani Raju. All rights reserved.</p>
+      <a href="../trekking.html">&larr; Back to Trekking Journal</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

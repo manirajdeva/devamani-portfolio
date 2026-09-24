@@ -1,0 +1,12 @@
+# Raw source photo dumps — the photos actually used on the site have
+# already been copied/renamed into assets/images/gallery/, so this folder
+# is just scratch input and would needlessly bloat the repo.
+mani_insta/
+
+# Stray duplicate — the site serves assets/documents/resume.pdf instead
+Devamani raj new Resume.pdf
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
