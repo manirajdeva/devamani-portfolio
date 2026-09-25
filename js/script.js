@@ -48,17 +48,31 @@ function initMobileNav() {
   const navLinks = document.querySelector(".nav-links");
   if (!hamburger || !navLinks) return;
 
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("open");
-    navLinks.classList.toggle("open");
-  });
+  const setOpen = (open) => {
+    hamburger.classList.toggle("open", open);
+    navLinks.classList.toggle("open", open);
+    document.body.classList.toggle("nav-open", open); // dims page + locks scroll (see CSS)
+    hamburger.setAttribute("aria-expanded", String(open));
+  };
+  hamburger.setAttribute("aria-expanded", "false");
+  hamburger.setAttribute("aria-controls", "nav-links");
+
+  hamburger.addEventListener("click", () => setOpen(!navLinks.classList.contains("open")));
 
   navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("open");
-      navLinks.classList.remove("open");
-    });
+    link.addEventListener("click", () => setOpen(false));
   });
+
+  // Tap on the dimmed backdrop (anywhere outside the panel/hamburger) closes the menu
+  document.addEventListener("click", (e) => {
+    if (navLinks.classList.contains("open") && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+      setOpen(false);
+    }
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+
+  // Rotating the device / resizing to desktop width must not leave the page scroll-locked
+  window.addEventListener("resize", () => { if (window.innerWidth > 860) setOpen(false); });
 }
 
 /* -------------------------------------------------------------------------

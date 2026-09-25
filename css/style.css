@@ -62,7 +62,7 @@
    ------------------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 
 body {
   font-family: var(--font-body);
@@ -537,7 +537,7 @@ p { color: var(--color-text-muted); }
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--space-lg);
 }
 
@@ -1067,7 +1067,7 @@ p { color: var(--color-text-muted); }
   font-weight: 700;
 }
 
-.offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); }
+.offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-md); }
 .offer-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1121,41 +1121,184 @@ p { color: var(--color-text-muted); }
    ------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .split-section { grid-template-columns: 1fr; }
+  .split-section { grid-template-columns: 1fr; gap: var(--space-lg); }
   .about-pillars { grid-template-columns: 1fr; }
   .masonry { column-count: 3; }
   .stat-strip { grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
 }
 
 @media (max-width: 860px) {
+  :root {
+    --header-height: 64px;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+  }
+
+  /* backdrop-filter on the header would turn it into the containing block for
+     the position:fixed slide-in panel below (shrinking the panel to header
+     height once scrolled), so use a near-opaque solid bar on mobile instead. */
+  .site-header.scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(250, 248, 244, 0.98);
+  }
+
   .nav-links {
     position: fixed;
     top: 0; right: 0;
     height: 100vh;
-    width: min(320px, 80vw);
+    height: 100dvh;
+    width: min(320px, 85vw);
     background: var(--color-surface);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
-    padding: calc(var(--header-height) + var(--space-lg)) var(--space-lg);
-    gap: var(--space-md);
+    padding: calc(var(--header-height) + var(--space-md)) var(--space-md) var(--space-lg);
+    gap: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     box-shadow: var(--shadow-lg);
     transform: translateX(100%);
-    transition: transform var(--transition);
+    visibility: hidden;
+    transition: transform var(--transition), visibility 0s linear var(--transition);
   }
-  .nav-links.open { transform: translateX(0); }
-  .nav-cta { margin-left: 0; }
-  .hamburger { display: flex; }
+  .nav-links.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--transition), visibility 0s;
+  }
+  .nav-links a:not(.btn) {
+    padding: 0.85rem 0.25rem;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-links a:not(.btn)::after { display: none; }
+  .nav-links a.active:not(.btn) { color: var(--color-accent-dark); }
+  .nav-cta { margin: var(--space-md) 0 0; justify-content: center; padding: 0.85rem 1.3rem; }
+
+  /* Dim the page behind the open menu (header/nav sit above at z-index 1000) */
+  body.nav-open { overflow: hidden; }
+  body.nav-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--color-overlay);
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    margin-right: -10px;
+  }
+  /* The panel is white, so the "X" must be dark even over the transparent header */
+  .hamburger.open span { background: var(--color-text); }
+
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .project-detail-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
-  .footer-grid { grid-template-columns: 1fr; }
-  .masonry { column-count: 2; }
+  .container { padding: 0 1.1rem; }
+  .section-heading { margin-bottom: var(--space-lg); }
+  .section-heading p { font-size: 1rem; }
+  .lead { font-size: 1.05rem; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .footer-bottom { flex-direction: column; text-align: center; align-items: center; }
+  .site-footer { padding-top: var(--space-xl); }
+
+  .masonry { column-count: 2; column-gap: 0.6rem; }
+  .masonry-item { margin-bottom: 0.6rem; border-radius: var(--radius-sm); }
+
+  /* Hero */
+  .hero { min-height: 100vh; min-height: 100svh; }
+  .hero-content { padding-left: 1.1rem; padding-right: 1.1rem; padding-bottom: 5rem; }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; padding: 0.35rem 0.8rem; }
+  .hero-subtitle { font-size: 1rem; }
   .hero-statement { padding-left: var(--space-sm); font-size: 1.05rem; }
+  .hero-actions { gap: 0.6rem; margin-top: var(--space-md); }
+  .hero-actions .btn { flex: 1 1 calc(50% - 0.3rem); justify-content: center; padding: 0.8rem 1rem; font-size: 0.88rem; }
+  .hero-actions .btn:first-child { flex-basis: 100%; }
+  .scroll-indicator { display: none; }
+
+  .page-hero { padding: calc(var(--header-height) + var(--space-lg)) 0 var(--space-xl); }
+
+  .btn { white-space: normal; text-align: center; }
+
+  /* Cards, timeline, modal */
+  .card-body { padding: var(--space-sm) 1.1rem 1.25rem; }
+  .cards-grid { gap: var(--space-md); }
+  .timeline-item { padding-left: 52px; margin-bottom: var(--space-lg); }
+  .timeline::before { left: 20px; }
+  .timeline-item .timeline-dot { left: 12px; }
+  .timeline-card { padding: var(--space-sm) 1.1rem; overflow-wrap: anywhere; }
+  .journey-timeline::before { left: 21px; }
+  .journey-item { padding-left: 58px; }
+  .journey-icon { width: 44px; height: 44px; font-size: 1.05rem; }
+
+  .modal-overlay { padding: 0.75rem; align-items: flex-end; }
+  .modal-box { max-height: 90vh; max-height: 90dvh; padding: var(--space-md) 1.1rem; border-radius: var(--radius-md); }
+  .modal-close { width: 44px; height: 44px; }
+
+  .cta-band { padding: var(--space-lg) 1.1rem; border-radius: var(--radius-md); }
+  .stat-strip .stat-number { font-size: 1.9rem; }
+  .pillar-card { padding: var(--space-md); }
+  .contact-info-card { padding: var(--space-md); }
+  .profile-photo { max-width: 300px; }
+
+  /* Story pages */
+  .story-hero { height: 60vh; height: 60svh; min-height: 340px; }
+  .story-hero-content { padding: var(--space-xl) 0 var(--space-md); }
+  .story-body { padding: var(--space-xl) 1.1rem; }
+  .story-body p { font-size: 1rem; }
+  .story-meta-bar { gap: 0.6rem 1rem; font-size: 0.82rem; }
+  .quick-facts { grid-template-columns: repeat(2, 1fr); padding: var(--space-sm); }
+  .story-gallery { grid-template-columns: repeat(2, 1fr); }
+  .map-embed, .map-placeholder { aspect-ratio: 4 / 3; }
+  .day-block { padding-left: var(--space-sm); }
   .story-nav { flex-direction: column; }
   .story-nav a, .story-nav .next { max-width: 100%; text-align: left; margin-left: 0; }
+
+  /* Filters: single scrollable row instead of a tall wrapped stack */
+  .filter-bar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    margin-inline: -1.1rem;
+    padding: 0 1.1rem 0.4rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-btn { flex-shrink: 0; padding: 0.65rem 1.2rem; }
+
+  .resume-entry-head { flex-direction: column; }
+}
+
+@media (max-width: 380px) {
+  h1 { font-size: 2.1rem; }
+  .btn { padding: 0.8rem 1.3rem; }
+  .quick-facts { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .logo { font-size: 1.15rem; }
+}
+
+/* Touch devices have no hover, so gallery captions would never appear:
+   show them permanently, and drop hover lifts that stick after a tap. */
+@media (hover: none) {
+  .masonry-caption { opacity: 1; transform: none; padding: 0.5rem 0.6rem; }
+  .masonry-caption h4 { font-size: 0.8rem; }
+  .masonry-caption span { display: none; }
+  .card:hover, .pillar-card:hover, .offer-card:hover, .skill-chip:hover { transform: none; }
+  .card:hover .card-media img, .masonry-item:hover img { transform: none; }
+}
+
+/* Phones in landscape: the full-height hero would push content off-screen */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: calc(var(--header-height) + var(--space-md)) 0 var(--space-lg); }
+  .scroll-indicator { display: none; }
 }
 
 /* Large / wide monitors: the h1 clamp() maxes out around 4rem on any screen
