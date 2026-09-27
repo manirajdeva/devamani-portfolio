@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGalleryFilter();
   initSiteSearch();
   initContactForm();
+  initPillarCardCursorCTA();
 
   initRevealAnimations();
 });
@@ -495,5 +496,43 @@ function initContactForm() {
     status.textContent = "Thanks for reaching out! (Form is not yet connected to a backend — see README for setup instructions.)";
     status.className = "form-status success";
     form.reset();
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Inspiration cards: "Read Story" pill follows the cursor inside the card
+   ------------------------------------------------------------------------- */
+function initPillarCardCursorCTA() {
+  document.querySelectorAll(".card-glow").forEach((card) => {
+    const cta = card.querySelector(".pillar-card-cta");
+    if (!cta) return;
+
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+    let scale = 0.85;
+    let hovering = false;
+
+    const render = () => {
+      currentX += (targetX - currentX) * 0.18;
+      currentY += (targetY - currentY) * 0.18;
+      scale += ((hovering ? 1 : 0.85) - scale) * 0.18;
+      cta.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%) scale(${scale})`;
+      requestAnimationFrame(render);
+    };
+    requestAnimationFrame(render);
+
+    const trackPointer = (e) => {
+      const rect = card.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+    };
+
+    card.addEventListener("mouseenter", (e) => {
+      hovering = true;
+      trackPointer(e);
+      currentX = targetX;
+      currentY = targetY;
+    });
+    card.addEventListener("mousemove", trackPointer);
+    card.addEventListener("mouseleave", () => { hovering = false; });
   });
 }

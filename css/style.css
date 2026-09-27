@@ -987,6 +987,97 @@ p { color: var(--color-text-muted); }
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .pillar-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+
+/* Animated gradient ring that traces clockwise around the card edge on hover.
+   The glow lives on an outer wrapper (.card-glow) behind an opaque, fully
+   in-flow .pillar-card so it only ever shows as a thin border line, never a
+   wash across the card face. */
+@property --glow-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+.card-glow { position: relative; display: block; border-radius: calc(var(--radius-md) + 2px); }
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--glow-angle), #ff6ec7, #7873f5, #4facfe, #43e97b, #f9d423, #ff6ec7);
+  filter: blur(1.5px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  animation: glow-spin 3s linear infinite paused;
+}
+.card-glow:hover::before { opacity: 1; animation-play-state: running; }
+.card-glow .pillar-card { position: relative; z-index: 1; }
+@keyframes glow-spin { to { --glow-angle: 360deg; } }
+
+.pillar-card-cta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 8px 24px rgba(28,53,32,0.15), inset 0 1px 1px rgba(255,255,255,0.85);
+  color: var(--color-primary-dark);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+.card-glow:hover .pillar-card-cta { opacity: 1; }
+@media (hover: none) {
+  .pillar-card-cta { opacity: 1; }
+  .card-glow::before { display: none; }
+}
+
+/* Always-on version of the gradient edge glow, for a static portrait photo
+   rather than a hover card (e.g. a memorial/tribute image). */
+.photo-glow {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  border-radius: calc(var(--radius-md) + 3px);
+  margin: 0 auto;
+}
+.photo-glow::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--glow-angle), #ff6ec7, #7873f5, #4facfe, #43e97b, #f9d423, #ff6ec7);
+  filter: blur(2px);
+  z-index: 0;
+  animation: glow-spin 4s linear infinite;
+}
+.photo-glow > img { position: relative; z-index: 1; display: block; }
+
+/* Old scanned photos often carry their own uneven border/frame — contain
+   the whole print inside a neutral mat instead of cropping into it. */
+.profile-photo-contain {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: var(--color-bg-alt);
+  margin: 0 auto;
+}
+
 .pillar-icon {
   width: 64px; height: 64px;
   margin: 0 auto var(--space-sm);
