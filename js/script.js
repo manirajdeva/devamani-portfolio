@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initPillarCardCursorCTA();
 
+  initMotionTargets();
   initRevealAnimations();
+  initScrollEffects();
 });
 
 /* -------------------------------------------------------------------------
@@ -535,4 +537,60 @@ function initPillarCardCursorCTA() {
     card.addEventListener("mousemove", trackPointer);
     card.addEventListener("mouseleave", () => { hovering = false; });
   });
+}
+
+/* -------------------------------------------------------------------------
+   Motion enhancements
+   initMotionTargets tags existing elements with reveal classes (no HTML
+   edits needed). initScrollEffects drives the progress bar, hero parallax
+   and timeline line draw.
+   ------------------------------------------------------------------------- */
+function initMotionTargets() {
+  const tag = (sel, cls, stagger) => document.querySelectorAll(sel).forEach((el, i) => {
+    if (el.classList.contains("reveal")) return;
+    el.classList.add("reveal");
+    if (cls) el.classList.add(cls);
+    if (stagger) el.style.setProperty("--i", i % 8);
+  });
+
+  tag(".skill-chip", null, true);
+  tag(".masonry-item", "reveal-zoom");
+  tag(".contact-info-row", "reveal-left");
+  tag(".resume-entry", "reveal-left");
+
+  document.querySelectorAll(".timeline-item").forEach((el, i) => {
+    el.classList.add(i % 2 ? "reveal-right" : "reveal-left");
+  });
+}
+
+function initScrollEffects() {
+  const bar = document.createElement("div");
+  bar.className = "scroll-progress";
+  document.body.appendChild(bar);
+
+  const heroBg = document.querySelector(".hero-bg");
+  const timelines = document.querySelectorAll(".timeline, .journey-timeline");
+  let ticking = false;
+
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+
+    if (heroBg && window.scrollY < window.innerHeight) {
+      heroBg.style.setProperty("--parallax", `${window.scrollY * 0.2}px`);
+    }
+
+    timelines.forEach(t => {
+      const r = t.getBoundingClientRect();
+      const p = (window.innerHeight * 0.7 - r.top) / r.height;
+      t.style.setProperty("--line-progress", Math.max(0, Math.min(1, p)));
+    });
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 }
