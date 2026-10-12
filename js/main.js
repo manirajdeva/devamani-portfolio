@@ -182,6 +182,7 @@ function headerHTML() {
       <a href="${ROOT}index.html" data-nav="home">Home</a>
       <a href="${ROOT}work.html" data-nav="work">Work</a>
       <a href="${ROOT}journal.html" data-nav="journal">Journal</a>
+      <a href="${ROOT}gallery.html" data-nav="gallery">Gallery</a>
       <a href="${ROOT}viharasetu.html" data-nav="vihara">ViharaSetu</a>
       <a href="${ROOT}contact.html" data-nav="contact">Contact</a>
     </div>
@@ -239,7 +240,7 @@ function initChrome() {
   onScroll();
 
   /* Highlight the current page in the nav */
-  const here = { home: "home", work: "work", journal: "journal", gallery: "journal", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
+  const here = { home: "home", work: "work", journal: "journal", gallery: "gallery", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
   $$(`[data-nav="${here}"]`).forEach(a => a.classList.add("active"));
 
   /* Mobile menu */
