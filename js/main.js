@@ -609,22 +609,50 @@ function initHome() {
 
 /* 10. CONTACT PAGE ("Get Started" email form) ------------------------------- */
 function initContactForm() {
-  const form = $("#get-started");
-  if (!form) return;
-  const msg = $("#form-msg"), input = $("#gs-email");
+  const quick = $("#get-started"), form = $("#contact-form");
+  if (!quick || !form) return;
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const TO = "devamaniraju.talabhatla@ibexlabs.com";
+
+  /* Hero "Get Started": carry the email into the full form and jump to it */
+  quick.addEventListener("submit", e => {
+    e.preventDefault();
+    const v = $("#gs-email").value.trim();
+    if (v) $("#cf-email").value = v;
+    $("#contact-form-section").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    setTimeout(() => $(v ? "#cf-name" : "#cf-email").focus({ preventScroll: true }), 500);
+  });
+
+  /* Live character counter */
+  const msgBox = $("#cf-message"), count = $("#cf-count");
+  msgBox.addEventListener("input", () => { count.textContent = `${msgBox.value.length} / 1000`; });
+
+  /* Validation + send. mailto keeps the site fully static; to use Formspree,
+     replace the location.href line with a fetch() POST to your endpoint. */
+  const out = $("#cf-msg");
+  const flag = (id, bad) => $("#" + id).closest(".field").classList.toggle("invalid", bad);
   form.addEventListener("submit", e => {
     e.preventDefault();
-    const email = input.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      msg.style.color = "#ff6b6b"; msg.textContent = "Please enter a valid email address."; input.focus(); return;
+    const name = $("#cf-name").value.trim(), email = $("#cf-email").value.trim(), msg = msgBox.value.trim();
+    flag("cf-name", !name); flag("cf-email", !EMAIL_RE.test(email)); flag("cf-message", !msg);
+    if (!name || !EMAIL_RE.test(email) || !msg) {
+      out.style.color = "#ff6b6b"; out.textContent = "Please fill in your name, a valid email and a message.";
+      return;
     }
-    /* mailto keeps this 100% static. To use Formspree instead, replace this
-       block with a fetch() POST to your Formspree endpoint. */
-    const subject = encodeURIComponent("Hello from your portfolio");
-    const body = encodeURIComponent(`Hi Devamani,\n\nI'd like to connect. You can reach me at ${email}.\n\n`);
-    msg.style.color = "#46d369"; msg.textContent = "Opening your email app…";
-    location.href = `mailto:devamaniraju.talabhatla@ibexlabs.com?subject=${subject}&body=${body}`;
+    const topic = (form.querySelector("[name=topic]:checked") || {}).value || "Hello";
+    const subject = $("#cf-subject").value.trim() || topic;
+    const body = `${msg}\n\n— ${name}\n${email}`;
+    out.style.color = "#46d369"; out.textContent = "Opening your email app…";
+    location.href = `mailto:${TO}?subject=${encodeURIComponent(`[${topic}] ${subject}`)}&body=${encodeURIComponent(body)}`;
   });
+
+  /* Copy-to-clipboard buttons on the info cards */
+  $$(".copy").forEach(btn => btn.addEventListener("click", async e => {
+    e.preventDefault(); e.stopPropagation();
+    try { await navigator.clipboard.writeText(btn.dataset.copy); } catch (err) { return; }
+    btn.classList.add("done"); btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+    setTimeout(() => { btn.classList.remove("done"); btn.innerHTML = '<i class="fa-regular fa-copy"></i>'; }, 1500);
+  }));
 }
 
 /* BOOT ------------------------------------------------------------------------ */

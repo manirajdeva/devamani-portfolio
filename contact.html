@@ -19,33 +19,78 @@
 
 <main id="main">
   <section class="contact-hero">
+    <span class="eyebrow">CONTACT</span>
     <h1>Ready to watch? Let's connect.</h1>
-    <p class="sub">For Data Engineering opportunities, collaborations or ViharaSetu inquiries — enter your email and I'll get back to you.</p>
-
-    <!-- Opens the visitor's email app (static). To use Formspree instead, see initContactForm() in js/main.js -->
+    <p class="sub">Data Engineering roles, collaborations or ViharaSetu inquiries — drop your email and tell me what you have in mind.</p>
+    <div class="avail"><span class="dot"></span> Available for new conversations</div>
     <form class="get-started" id="get-started" novalidate>
       <label class="sr-only" for="gs-email">Your email address</label>
       <input type="email" id="gs-email" placeholder="Email address" autocomplete="email" required>
       <button type="submit" class="btn btn-red btn-lg">Get Started <i class="fa-solid fa-chevron-right"></i></button>
     </form>
-    <p class="form-msg" id="form-msg" role="status"></p>
-
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/tdevamani/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="https://github.com/manirajdeva" aria-label="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
-      <a href="https://instagram.com/maniraj_deva" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@Travel_with_devaratha" aria-label="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
-    </div>
   </section>
 
-  <div class="contact-rows">
-    <div><h4>Professional email</h4><a href="mailto:devamaniraju.talabhatla@ibexlabs.com">devamaniraju.talabhatla@ibexlabs.com</a></div>
-    <div><h4>Personal email</h4><a href="mailto:maniraju0208@gmail.com">maniraju0208@gmail.com</a></div>
-    <div><h4>Phone</h4><a href="tel:+918722021295">+91 87220 21295</a></div>
-    <div><h4>ViharaSetu</h4><a href="mailto:info@viharasetu.co.in">info@viharasetu.co.in</a></div>
-  </div>
+  <section class="contact-main" id="contact-form-section">
+    <!-- LEFT: message form -->
+    <form class="glass-form fx" id="contact-form" novalidate>
+      <h2>Send a message</h2>
+      <p class="form-sub">I usually reply within a day or two.</p>
 
-  <section class="faq" aria-labelledby="faq-title">
+      <fieldset class="topics">
+        <legend class="sr-only">What is this about?</legend>
+        <label><input type="radio" name="topic" value="Job opportunity" checked><span>Job opportunity</span></label>
+        <label><input type="radio" name="topic" value="Collaboration"><span>Collaboration</span></label>
+        <label><input type="radio" name="topic" value="ViharaSetu"><span>ViharaSetu</span></label>
+        <label><input type="radio" name="topic" value="Say hello"><span>Say hello</span></label>
+      </fieldset>
+
+      <div class="field-row">
+        <div class="field"><input type="text" id="cf-name" name="name" placeholder=" " autocomplete="name" required><label for="cf-name">Your name</label></div>
+        <div class="field"><input type="email" id="cf-email" name="email" placeholder=" " autocomplete="email" required><label for="cf-email">Email address</label></div>
+      </div>
+      <div class="field"><input type="text" id="cf-subject" name="subject" placeholder=" "><label for="cf-subject">Subject (optional)</label></div>
+      <div class="field"><textarea id="cf-message" name="message" rows="6" placeholder=" " maxlength="1000" required></textarea><label for="cf-message">Your message</label><span class="count" id="cf-count">0 / 1000</span></div>
+
+      <button type="submit" class="btn btn-red btn-lg btn-block"><span>Send Message</span> <i class="fa-solid fa-paper-plane"></i></button>
+      <p class="form-msg" id="cf-msg" role="status"></p>
+      <p class="form-note">Opens your email app with the message ready to send.</p>
+    </form>
+
+    <!-- RIGHT: details -->
+    <aside class="contact-side fx">
+      <a class="info-card" href="mailto:devamaniraju.talabhatla@ibexlabs.com">
+        <i class="fa-solid fa-briefcase"></i>
+        <div><h4>Professional email</h4><span>devamaniraju.talabhatla@ibexlabs.com</span></div>
+        <button type="button" class="copy" data-copy="devamaniraju.talabhatla@ibexlabs.com" aria-label="Copy professional email"><i class="fa-regular fa-copy"></i></button>
+      </a>
+      <a class="info-card" href="mailto:maniraju0208@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+        <div><h4>Personal email</h4><span>maniraju0208@gmail.com</span></div>
+        <button type="button" class="copy" data-copy="maniraju0208@gmail.com" aria-label="Copy personal email"><i class="fa-regular fa-copy"></i></button>
+      </a>
+      <a class="info-card" href="tel:+918722021295">
+        <i class="fa-solid fa-phone"></i>
+        <div><h4>Phone</h4><span>+91 87220 21295</span></div>
+        <button type="button" class="copy" data-copy="+91 87220 21295" aria-label="Copy phone number"><i class="fa-regular fa-copy"></i></button>
+      </a>
+      <a class="info-card" href="mailto:info@viharasetu.co.in">
+        <i class="fa-solid fa-bridge"></i>
+        <div><h4>ViharaSetu</h4><span>info@viharasetu.co.in</span></div>
+        <button type="button" class="copy" data-copy="info@viharasetu.co.in" aria-label="Copy ViharaSetu email"><i class="fa-regular fa-copy"></i></button>
+      </a>
+      <div class="side-social">
+        <h4>Find me online</h4>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/tdevamani/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/manirajdeva" aria-label="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+          <a href="https://instagram.com/maniraj_deva" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@Travel_with_devaratha" aria-label="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+<section class="faq" aria-labelledby="faq-title">
     <h2 id="faq-title">Frequently Asked Questions</h2>
     <details>
       <summary>What do you do?</summary>
