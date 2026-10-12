@@ -215,7 +215,7 @@ function footerHTML() {
       <div class="footer-social">${SOCIAL.map(s => `<a href="${s.href}" aria-label="${s.label}" target="_blank" rel="noopener"><i class="${s.icon}"></i></a>`).join("")}</div>
       <div class="footer-cols">
         ${col("Work", [["Career", ROOT + "work.html#career"], ["Projects", ROOT + "work.html#projects"], ["Skills", ROOT + "work.html#skills"], ["Resume", ROOT + "resume.html"]])}
-        ${col("Journal", [["Travel", ROOT + "journal.html#travel"], ["Trekking", ROOT + "journal.html#trek"], ["Life Stories", ROOT + "journal.html#life"], ["Gallery", ROOT + "journal.html#gallery"]])}
+        ${col("Journal", [["Travel", ROOT + "journal.html#travel"], ["Trekking", ROOT + "journal.html#trek"], ["Life Stories", ROOT + "journal.html#life"], ["Gallery", ROOT + "gallery.html"]])}
         ${col("ViharaSetu", [["About ViharaSetu", ROOT + "viharasetu.html"], ["viharasetu.co.in", "https://viharasetu.co.in", true], ["info@viharasetu.co.in", "mailto:info@viharasetu.co.in"], ["Contact", ROOT + "contact.html"]])}
         ${col("Social", SOCIAL.map(s => [s.label, s.href, true]))}
       </div>
@@ -239,7 +239,7 @@ function initChrome() {
   onScroll();
 
   /* Highlight the current page in the nav */
-  const here = { home: "home", work: "work", journal: "journal", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
+  const here = { home: "home", work: "work", journal: "journal", gallery: "journal", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
   $$(`[data-nav="${here}"]`).forEach(a => a.classList.add("active"));
 
   /* Mobile menu */
@@ -342,7 +342,7 @@ function rowHTML(id, items) {
   const meta = ROW_META[id];
   return `
   <section class="row fx" id="${id}" data-group="${meta.group}" aria-labelledby="t-${id}">
-    <h2 class="row-title" id="t-${id}">${meta.title}</h2>
+    <h2 class="row-title" id="t-${id}">${meta.title}${id === "gallery" ? `<a class="row-link" href="${ROOT}gallery.html">Open full gallery <i class="fa-solid fa-angle-right"></i></a>` : ""}</h2>
     <div class="row-wrap">
       <button class="arrow left" aria-label="Scroll ${meta.title} left" disabled><i class="fa-solid fa-chevron-left"></i></button>
       <div class="scroller" tabindex="-1">${items.map(it => cardHTML(it, { top10: id === "top10" })).join("")}</div>
@@ -665,6 +665,94 @@ function initContactForm() {
   }));
 }
 
+/* 9c. GALLERY PAGE ----------------------------------------------------------
+   Two collections (Photography vs Travel & Memories), filter chips, and a
+   lightbox with prev/next, arrow keys, Esc and swipe. */
+function initGalleryPage() {
+  const all = galleryImages.map((g, i) => ({ ...g, i }));
+  const sets = {
+    photography: all.filter(g => g.category === "Photography"),
+    trips: all.filter(g => g.category !== "Photography"),
+    all
+  };
+  Object.entries(sets).forEach(([k, v]) => { $("#n-" + k).textContent = v.length; });
+  $("#g-total").textContent = `${all.length} photos`;
+
+  let tab = "photography", filter = "All", shown = [];
+  const grid = $("#g-grid"), chips = $("#g-filters");
+
+  function render() {
+    const pool = sets[tab];
+    /* Photography filters by style (caption); the others by category */
+    const keyOf = g => (tab === "photography" ? g.caption : g.category);
+    const keys = ["All", ...new Set(pool.map(keyOf))];
+    if (!keys.includes(filter)) filter = "All";
+    chips.innerHTML = keys.map(k => `<button type="button" class="chip-btn${k === filter ? " on" : ""}" data-f="${esc(k)}" aria-pressed="${k === filter}">${esc(k)}</button>`).join("");
+    shown = pool.filter(g => filter === "All" || keyOf(g) === filter);
+    grid.innerHTML = shown.map((g, n) => `
+      <button type="button" class="g-item" data-n="${n}" aria-label="Open photo: ${esc(g.caption)}">
+        <img src="${asset(g.src)}" alt="${esc(g.caption)}" loading="lazy" decoding="async">
+        <span class="g-cap"><strong>${esc(g.caption)}</strong><small>${esc(g.category)}</small></span>
+      </button>`).join("");
+  }
+
+  $$(".g-tabs [data-tab]").forEach(b => b.addEventListener("click", () => {
+    tab = b.dataset.tab; filter = "All";
+    $$(".g-tabs [data-tab]").forEach(x => x.setAttribute("aria-selected", x === b));
+    render();
+  }));
+  chips.addEventListener("click", e => {
+    const b = e.target.closest("[data-f]"); if (!b) return;
+    filter = b.dataset.f; render();
+  });
+
+  /* ---- Lightbox ---- */
+  const lb = $("#lightbox"), img = $("#lb-img");
+  let cur = 0, opener = null;
+  const show = n => {
+    cur = (n + shown.length) % shown.length;
+    const g = shown[cur];
+    img.src = asset(g.src); img.alt = g.caption;
+    $("#lb-cap").textContent = g.caption;
+    $("#lb-meta").textContent = `${g.category} · ${cur + 1} / ${shown.length}`;
+  };
+  const open = (n, trigger) => {
+    opener = trigger; show(n);
+    lb.classList.add("open"); document.body.classList.add("no-scroll");
+    $("[data-lb=close]", lb).focus();
+  };
+  const close = () => {
+    if (!lb.classList.contains("open")) return;
+    lb.classList.remove("open"); document.body.classList.remove("no-scroll");
+    if (opener) opener.focus();
+  };
+
+  grid.addEventListener("click", e => {
+    const b = e.target.closest(".g-item"); if (b) open(+b.dataset.n, b);
+  });
+  lb.addEventListener("click", e => {
+    const a = e.target.closest("[data-lb]");
+    if (a) { const k = a.dataset.lb; k === "close" ? close() : show(cur + (k === "next" ? 1 : -1)); }
+    else if (e.target === lb) close();
+  });
+  document.addEventListener("keydown", e => {
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowRight") show(cur + 1);
+    if (e.key === "ArrowLeft") show(cur - 1);
+  });
+  let x0 = null;                                   /* swipe on touch screens */
+  lb.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+  });
+
+  render();
+  if (location.hash === "#trips" || location.hash === "#all") $(`[data-tab="${location.hash.slice(1)}"]`).click();
+}
+
 /* BOOT ------------------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", () => {
   initChrome();
@@ -672,5 +760,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (PAGE === "home") initHome();
   else if (PAGE === "work") initRowsPage(["work"]);
   else if (PAGE === "journal") initRowsPage(["journal"]);
+  else if (PAGE === "gallery") initGalleryPage();
   else initFadeIn();
 });

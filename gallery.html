@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — T Devamani Raju</title>
+<meta name="description" content="Photography and travel photo gallery by T Devamani Raju — street, portrait, macro, landscape, treks and trips.">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="gallery" data-root="">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <header class="page-banner" style="background: linear-gradient(180deg, rgba(20,20,20,.5), #141414), linear-gradient(77deg, rgba(0,0,0,.8), rgba(0,0,0,.15)), url('assets/images/profile/hero-mountains.jpg') center / cover">
+    <div>
+      <div class="series-tag"><span class="badge" aria-hidden="true">D</span><span>GALLERY</span></div>
+      <h1>Gallery</h1>
+      <div class="meta-line"><span class="match">98% Match</span><span id="g-total"></span><span class="age-badge">ALL</span><span>Photography • Travel • Trekking • Memories</span></div>
+      <p class="hero-desc">Frames from the street, the mountains and the road — the photography collection, and the photos from trips and treks.</p>
+    </div>
+  </header>
+
+  <div class="gallery-wrap">
+    <!-- Two collections: my photography vs. photos from trips / memories -->
+    <div class="g-tabs" role="tablist" aria-label="Gallery collections">
+      <button role="tab" id="tab-photography" aria-selected="true" data-tab="photography"><i class="fa-solid fa-camera"></i> Photography <span class="n" id="n-photography"></span></button>
+      <button role="tab" id="tab-trips" aria-selected="false" data-tab="trips"><i class="fa-solid fa-mountain-sun"></i> Travel &amp; Memories <span class="n" id="n-trips"></span></button>
+      <button role="tab" id="tab-all" aria-selected="false" data-tab="all"><i class="fa-solid fa-images"></i> All <span class="n" id="n-all"></span></button>
+    </div>
+    <div class="g-filters" id="g-filters" role="group" aria-label="Filter photos"></div>
+    <div class="g-grid" id="g-grid" aria-live="polite"></div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" aria-label="Close viewer" data-lb="close"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-nav prev" aria-label="Previous photo" data-lb="prev"><i class="fa-solid fa-chevron-left"></i></button>
+  <figure>
+    <img id="lb-img" alt="">
+    <figcaption><strong id="lb-cap"></strong><span id="lb-meta"></span></figcaption>
+  </figure>
+  <button class="lb-nav next" aria-label="Next photo" data-lb="next"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/content.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
