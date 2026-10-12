@@ -355,7 +355,7 @@ function rowHTML(id, items) {
 let ROWS = {};
 function renderRows(profileId, groups) {
   const host = $("#rows");
-  const order = PROFILES[profileId].order.filter(id => !groups || groups.includes(ROW_META[id].group));
+  const order = PROFILES[profileId].order.filter(id => groups ? groups.includes(ROW_META[id].group) : id !== "gallery");  /* home skips Gallery (it has its own page) */
   const listItems = [...myList].map(k => ITEMS[k]).filter(Boolean);
 
   let html = rowHTML("myList", listItems).replace('class="row fx"', `class="row fx${listItems.length ? "" : " hidden"}"`);
