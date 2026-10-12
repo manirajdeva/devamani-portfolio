@@ -183,6 +183,7 @@ function headerHTML() {
       <a href="${ROOT}work.html" data-nav="work">Work</a>
       <a href="${ROOT}journal.html" data-nav="journal">Journal</a>
       <a href="${ROOT}gallery.html" data-nav="gallery">Gallery</a>
+      <a href="${ROOT}inspirations.html" data-nav="inspirations">Inspirations</a>
       <a href="${ROOT}viharasetu.html" data-nav="vihara">ViharaSetu</a>
       <a href="${ROOT}contact.html" data-nav="contact">Contact</a>
     </div>
@@ -216,7 +217,7 @@ function footerHTML() {
       <div class="footer-social">${SOCIAL.map(s => `<a href="${s.href}" aria-label="${s.label}" target="_blank" rel="noopener"><i class="${s.icon}"></i></a>`).join("")}</div>
       <div class="footer-cols">
         ${col("Work", [["Career", ROOT + "work.html#career"], ["Projects", ROOT + "work.html#projects"], ["Skills", ROOT + "work.html#skills"], ["Resume", ROOT + "resume.html"]])}
-        ${col("Journal", [["Travel", ROOT + "journal.html#travel"], ["Trekking", ROOT + "journal.html#trek"], ["Life Stories", ROOT + "journal.html#life"], ["Gallery", ROOT + "gallery.html"]])}
+        ${col("Journal", [["Travel", ROOT + "journal.html#travel"], ["Trekking", ROOT + "journal.html#trek"], ["Life Stories", ROOT + "journal.html#life"], ["My Inspirations", ROOT + "inspirations.html"], ["Gallery", ROOT + "gallery.html"]])}
         ${col("ViharaSetu", [["About ViharaSetu", ROOT + "viharasetu.html"], ["viharasetu.co.in", "https://viharasetu.co.in", true], ["info@viharasetu.co.in", "mailto:info@viharasetu.co.in"], ["Contact", ROOT + "contact.html"]])}
         ${col("Social", SOCIAL.map(s => [s.label, s.href, true]))}
       </div>
@@ -225,6 +226,7 @@ function footerHTML() {
   </footer>`;
 }
 
+let PAGE_NAV = "";
 function initChrome() {
   const h = $("#site-header"), f = $("#site-footer");
   if (h) h.outerHTML = headerHTML();
@@ -240,7 +242,8 @@ function initChrome() {
   onScroll();
 
   /* Highlight the current page in the nav */
-  const here = { home: "home", work: "work", journal: "journal", gallery: "gallery", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
+  if (location.pathname.includes("/inspirations/")) PAGE_NAV = "inspirations";
+  const here = PAGE_NAV || { home: "home", work: "work", journal: "journal", gallery: "gallery", inspirations: "inspirations", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
   $$(`[data-nav="${here}"]`).forEach(a => a.classList.add("active"));
 
   /* Mobile menu */
@@ -343,7 +346,7 @@ function rowHTML(id, items) {
   const meta = ROW_META[id];
   return `
   <section class="row fx" id="${id}" data-group="${meta.group}" aria-labelledby="t-${id}">
-    <h2 class="row-title" id="t-${id}">${meta.title}${id === "gallery" ? `<a class="row-link" href="${ROOT}gallery.html">Open full gallery <i class="fa-solid fa-angle-right"></i></a>` : ""}</h2>
+    <h2 class="row-title" id="t-${id}">${meta.title}${id === "gallery" ? `<a class="row-link" href="${ROOT}gallery.html">Open full gallery <i class="fa-solid fa-angle-right"></i></a>` : ""}${id === "inspirations" ? `<a class="row-link" href="${ROOT}inspirations.html">Open page <i class="fa-solid fa-angle-right"></i></a>` : ""}</h2>
     <div class="row-wrap">
       <button class="arrow left" aria-label="Scroll ${meta.title} left" disabled><i class="fa-solid fa-chevron-left"></i></button>
       <div class="scroller" tabindex="-1">${items.map(it => cardHTML(it, { top10: id === "top10" })).join("")}</div>
@@ -355,7 +358,7 @@ function rowHTML(id, items) {
 let ROWS = {};
 function renderRows(profileId, groups) {
   const host = $("#rows");
-  const order = PROFILES[profileId].order.filter(id => groups ? groups.includes(ROW_META[id].group) : id !== "gallery");  /* home skips Gallery (it has its own page) */
+  const order = PROFILES[profileId].order.filter(id => groups ? groups.includes(ROW_META[id].group) : !["gallery", "inspirations"].includes(id));  /* these have their own pages */
   const listItems = [...myList].map(k => ITEMS[k]).filter(Boolean);
 
   let html = rowHTML("myList", listItems).replace('class="row fx"', `class="row fx${listItems.length ? "" : " hidden"}"`);
@@ -754,6 +757,30 @@ function initGalleryPage() {
   if (location.hash === "#trips" || location.hash === "#all") $(`[data-tab="${location.hash.slice(1)}"]`).click();
 }
 
+/* 9d. INSPIRATIONS PAGE -----------------------------------------------------
+   Large story cards built from inspirationsList (js/content.js). Clicking a
+   card opens the detail modal, which links to the full story page. */
+function initInspirationsPage() {
+  ROWS = buildRows();
+  initModal();
+  initCardEvents();
+  $("#rows").innerHTML = `
+    <div class="insp-grid">
+      ${ROWS.inspirations.map(it => `
+      <article class="insp-card fx card" tabindex="0" data-key="${esc(it.key)}" aria-label="${esc(it.title)}">
+        <div class="insp-img"><img src="${asset(it.image)}" alt="${esc(it.title)}" loading="lazy"></div>
+        <div class="insp-body">
+          <span class="match">${it.match}% Match</span>
+          <h2>${esc(it.title)}</h2>
+          <p>${esc(it.desc)}</p>
+          <div class="chips">${it.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+          <a class="btn btn-play" href="${ROOT}${it.link}" onclick="event.stopPropagation()"><i class="fa-solid fa-play"></i> Read the story</a>
+        </div>
+      </article>`).join("")}
+    </div>`;
+  initFadeIn();
+}
+
 /* BOOT ------------------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", () => {
   initChrome();
@@ -762,5 +789,6 @@ document.addEventListener("DOMContentLoaded", () => {
   else if (PAGE === "work") initRowsPage(["work"]);
   else if (PAGE === "journal") initRowsPage(["journal"]);
   else if (PAGE === "gallery") initGalleryPage();
+  else if (PAGE === "inspirations") initInspirationsPage();
   else initFadeIn();
 });
