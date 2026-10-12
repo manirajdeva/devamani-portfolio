@@ -180,8 +180,8 @@ function headerHTML() {
     <a href="${ROOT}index.html" class="wordmark" aria-label="DEVAMANI — home">DEVAMANI</a>
     <div class="nav-links" id="nav-links">
       <a href="${ROOT}index.html" data-nav="home">Home</a>
-      <a href="${ROOT}index.html#work" data-nav="work">Work</a>
-      <a href="${ROOT}index.html#journal" data-nav="journal">Journal</a>
+      <a href="${ROOT}work.html" data-nav="work">Work</a>
+      <a href="${ROOT}journal.html" data-nav="journal">Journal</a>
       <a href="${ROOT}viharasetu.html" data-nav="vihara">ViharaSetu</a>
       <a href="${ROOT}contact.html" data-nav="contact">Contact</a>
     </div>
@@ -214,8 +214,8 @@ function footerHTML() {
       <div class="footer-brand"><span class="wordmark">DEVAMANI</span></div>
       <div class="footer-social">${SOCIAL.map(s => `<a href="${s.href}" aria-label="${s.label}" target="_blank" rel="noopener"><i class="${s.icon}"></i></a>`).join("")}</div>
       <div class="footer-cols">
-        ${col("Work", [["Career", ROOT + "index.html#career"], ["Projects", ROOT + "index.html#projects"], ["Skills", ROOT + "index.html#skills"], ["Resume", ROOT + "resume.html"]])}
-        ${col("Journal", [["Travel", ROOT + "index.html#travel"], ["Trekking", ROOT + "index.html#trek"], ["Life Stories", ROOT + "index.html#life"], ["Gallery", ROOT + "index.html#gallery"]])}
+        ${col("Work", [["Career", ROOT + "work.html#career"], ["Projects", ROOT + "work.html#projects"], ["Skills", ROOT + "work.html#skills"], ["Resume", ROOT + "resume.html"]])}
+        ${col("Journal", [["Travel", ROOT + "journal.html#travel"], ["Trekking", ROOT + "journal.html#trek"], ["Life Stories", ROOT + "journal.html#life"], ["Gallery", ROOT + "journal.html#gallery"]])}
         ${col("ViharaSetu", [["About ViharaSetu", ROOT + "viharasetu.html"], ["viharasetu.co.in", "https://viharasetu.co.in", true], ["info@viharasetu.co.in", "mailto:info@viharasetu.co.in"], ["Contact", ROOT + "contact.html"]])}
         ${col("Social", SOCIAL.map(s => [s.label, s.href, true]))}
       </div>
@@ -239,7 +239,7 @@ function initChrome() {
   onScroll();
 
   /* Highlight the current page in the nav */
-  const here = { home: "home", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
+  const here = { home: "home", work: "work", journal: "journal", resume: "work", contact: "contact", vihara: "vihara", story: "journal" }[PAGE];
   $$(`[data-nav="${here}"]`).forEach(a => a.classList.add("active"));
 
   /* Mobile menu */
@@ -352,9 +352,9 @@ function rowHTML(id, items) {
 }
 
 let ROWS = {};
-function renderRows(profileId) {
+function renderRows(profileId, groups) {
   const host = $("#rows");
-  const order = PROFILES[profileId].order;
+  const order = PROFILES[profileId].order.filter(id => !groups || groups.includes(ROW_META[id].group));
   const listItems = [...myList].map(k => ITEMS[k]).filter(Boolean);
 
   let html = rowHTML("myList", listItems).replace('class="row fx"', `class="row fx${listItems.length ? "" : " hidden"}"`);
@@ -362,7 +362,7 @@ function renderRows(profileId) {
   order.forEach(id => {
     /* anchor targets for the nav's "Work" and "Journal" links */
     const g = ROW_META[id].group;
-    if ((g === "work" || g === "journal") && !seen.has(g)) { html += `<span id="${g}"></span>`; seen.add(g); }
+    if (!groups && (g === "work" || g === "journal") && !seen.has(g)) { html += `<span id="${g}"></span>`; seen.add(g); }
     html += rowHTML(id, ROWS[id]);
   });
   host.innerHTML = html;
@@ -397,7 +397,7 @@ function initCardEvents() {
     else if (act === "like") toggleSet(likes, "dm.likes", key);
     else openModal(key, card);
   };
-  document.addEventListener("click", e => { if ($("#home-main") && e.target.closest("#rows, #results")) handle(e); });
+  document.addEventListener("click", e => { if (e.target.closest("#rows, #results")) handle(e); });
   document.addEventListener("keydown", e => {
     if (e.key !== "Enter" && e.key !== " ") return;
     if (e.target.classList.contains("card")) { e.preventDefault(); openModal(e.target.dataset.key, e.target); }
@@ -607,6 +607,16 @@ function initHome() {
   initFadeIn();
 }
 
+/* 9b. WORK / JOURNAL PAGES ------------------------------------------------
+   Same rows as the home page, filtered to one group. */
+function initRowsPage(groups) {
+  ROWS = buildRows();
+  initModal();
+  initCardEvents();
+  renderRows(getProfileId() || "engineer", groups);
+  if (location.hash) setTimeout(() => { const t = document.getElementById(location.hash.slice(1)); t && t.scrollIntoView(); }, 80);
+}
+
 /* 10. CONTACT PAGE ("Get Started" email form) ------------------------------- */
 function initContactForm() {
   const quick = $("#get-started"), form = $("#contact-form");
@@ -659,5 +669,8 @@ function initContactForm() {
 document.addEventListener("DOMContentLoaded", () => {
   initChrome();
   initContactForm();
-  if (PAGE === "home") initHome(); else initFadeIn();
+  if (PAGE === "home") initHome();
+  else if (PAGE === "work") initRowsPage(["work"]);
+  else if (PAGE === "journal") initRowsPage(["journal"]);
+  else initFadeIn();
 });

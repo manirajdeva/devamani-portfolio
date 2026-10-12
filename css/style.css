@@ -598,3 +598,13 @@ p { color: var(--muted); }
 
 @media (max-width: 900px) { .contact-main { grid-template-columns: 1fr; margin-top: 0; } }
 @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } .glass-form { padding: 1.4rem; } }
+
+/* 20 WORK / JOURNAL PAGES -------------------------------------------------- */
+.page-banner {
+  position: relative; min-height: 44vh; display: flex; align-items: flex-end; overflow: hidden;
+  padding: calc(var(--nav-h) + 2.5rem) var(--pad) 5rem;
+  background: linear-gradient(180deg, rgba(20,20,20,.55), var(--bg)), linear-gradient(77deg, rgba(0,0,0,.8), rgba(0,0,0,.2)), var(--bg-img) center / cover;
+}
+.page-banner h1 { font-size: clamp(3.2rem, 9vw, 6rem); }
+.page-banner .hero-desc { margin: .3rem 0 0; }
+#rows.rows-page { margin-top: -3rem; min-height: 50vh; }
