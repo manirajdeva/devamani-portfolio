@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trekking Diaries — T Devamani Raju</title>
+<meta name="description" content="Trekking diaries by T Devamani Raju — Kedarnath, Sivagange Hills, Netravathi Peak and Z Point.">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="trekking" data-root="">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <header class="page-banner" style="background: linear-gradient(180deg, rgba(20,20,20,.5), #141414), linear-gradient(77deg, rgba(0,0,0,.8), rgba(0,0,0,.15)), url('assets/images/profile/hero-mountains.jpg') center / cover">
+    <div>
+      <div class="series-tag"><span class="badge" aria-hidden="true">D</span><span>TREKKING DIARIES</span></div>
+      <h1>Trekking Diaries</h1>
+      <div class="meta-line"><span class="match">99% Match</span><span id="t-count"></span><span class="age-badge">ALL</span><span>Himalayas • Western Ghats • Karnataka Hills</span></div>
+      <p class="hero-desc">Trails, summits and the people I walked them with — one diary per trek.</p>
+    </div>
+  </header>
+
+  <!-- Cards are built by js/main.js from trekkingStories in js/data.js -->
+  <div class="trek-wrap" id="rows"></div>
+</main>
+
+<div id="site-footer"></div>
+
+<!-- Detail modal (filled by js/main.js) -->
+<div class="modal-back" id="modal-back">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/content.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
