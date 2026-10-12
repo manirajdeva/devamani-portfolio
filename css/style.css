@@ -693,3 +693,41 @@ p { color: var(--muted); }
 .trek-body .btn { margin-top: auto; }
 @media (max-width: 800px) { .trek-grid { grid-template-columns: 1fr; } .trek-img { height: 220px; } }
 @media (max-width: 1150px) and (min-width: 801px) { .nav-links { gap: .9rem; font-size: .85rem; } .site-nav { gap: 1rem; } }
+
+/* 24 MOBILE REFINEMENTS ----------------------------------------------------- */
+@media (max-width: 800px), (hover: none) {
+  /* No hover panel on touch, so drop the space reserved for it */
+  .scroller { padding-bottom: 1.4rem; margin-bottom: 0; }
+  .row:hover, .row:focus-within { z-index: auto; }
+}
+@media (max-width: 800px) {
+  #rows { margin-top: -3.5rem; }
+  .hero-content { padding-bottom: 7rem; }
+  #rows.rows-page, #rows.insp-wrap, #rows.trek-wrap { margin-top: 0; }
+  .nav-icon, .hamburger, .profile-btn { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .nav-right { gap: .2rem; }
+  .row-title { font-size: 1.1rem; }
+  .scroller { gap: .4rem; }
+  .card { width: 46vw; }
+  .modal-back { padding: 0; align-items: flex-end; }
+  .modal { border-radius: 14px 14px 0 0; max-width: none; }
+  .modal-banner { aspect-ratio: 16 / 10; }
+  .modal-close { top: .7rem; right: .7rem; width: 42px; height: 42px; }
+  .modal-body { padding-bottom: 2.5rem; }
+  /* Gallery: tabs and filters scroll sideways instead of stacking */
+  .g-tabs, .g-filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: calc(var(--pad) * -1); margin-right: calc(var(--pad) * -1); padding: 0 var(--pad); }
+  .g-tabs::-webkit-scrollbar, .g-filters::-webkit-scrollbar { display: none; }
+  .g-tabs button, .chip-btn { white-space: nowrap; flex: none; }
+  .g-tabs button { padding: .8rem .9rem; font-size: .9rem; }
+  .gallery-wrap { margin-top: -1rem; }
+  .about-hero { padding-bottom: 2rem; }
+  .season .s-head { flex-direction: column; }
+  .lb-nav { width: 44px; height: 44px; }
+  .lb-nav.prev { left: 25%; } .lb-nav.next { right: 25%; }
+}
+@media (max-width: 800px) {
+  .card .thumb .tile-icon { font-size: 1.9rem; padding-bottom: 1.9rem; }
+  .card .thumb .tile-icon span { font-size: 1rem; }
+  .card .cap { font-size: .78rem; padding: 1.2rem .6rem .45rem; }
+  .card.top10 .thumb .tile-icon { padding-bottom: 0; font-size: 2.2rem; }
+}

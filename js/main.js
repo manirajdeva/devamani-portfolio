@@ -311,7 +311,7 @@ const myList = new Set(store.getJSON("dm.list", []));
 function thumbHTML(it) {
   if (it.image) return `<img src="${asset(it.image)}" alt="${esc(it.title)}" loading="lazy" decoding="async">`;
   return `<div class="tile-icon" style="background:linear-gradient(135deg, ${it.color || "#333"}, #111)">
-            <i class="${it.brand ? "fa-brands" : "fa-solid"} ${it.icon || "fa-star"}" aria-hidden="true"></i><span>${esc(it.cap ? it.cap.split("·")[0] : it.title)}</span></div>`;
+            <i class="${it.brand ? "fa-brands" : "fa-solid"} ${it.icon || "fa-star"}" aria-hidden="true"></i>${it.cap ? "" : `<span>${esc(it.title)}</span>`}</div>`;
 }
 
 function cardHTML(it, opts = {}) {
