@@ -327,7 +327,7 @@ const projects = [
     client: "Personal Project — ViharaSetu",
     role: "Web Developer / Founder",
     duration: "2026",
-    image: "assets/images/viharasetu/viharasetu-cover.jpg",
+    image: "assets/images/viharasetu/viharasetu-cover1.jpg",
     tags: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Claude AI"],
     problem: "ViharaSetu needed its own live, public-facing travel website on a real domain — separate from this personal portfolio — where travelers could learn about the brand, browse trip categories and get in touch directly.",
     solution: "Designed and built a full travel website for ViharaSetu from scratch using HTML, CSS and JavaScript in VS Code, working with Claude as an AI coding assistant, then published it live on the custom domain viharasetu.co.in.",
