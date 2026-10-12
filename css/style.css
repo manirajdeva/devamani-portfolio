@@ -731,3 +731,5 @@ p { color: var(--muted); }
   .card .cap { font-size: .78rem; padding: 1.2rem .6rem .45rem; }
   .card.top10 .thumb .tile-icon { padding-bottom: 0; font-size: 2.2rem; }
 }
+/* Full-width story cards must not inherit the carousel card width on mobile */
+.card.insp-card, .card.trek-card { width: auto; }
