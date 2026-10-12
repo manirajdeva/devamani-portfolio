@@ -9,39 +9,22 @@
 <meta property="og:type" content="article">
 <link rel="icon" href="../assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body data-page="story" data-root="../">
 
 <!-- Sample story built from stories/travel-story-template.html. Replace narrative details with your own real experience. -->
 
-<header class="site-header">
-  <div class="container navbar">
-    <a href="../index.html" class="logo">T Devamani Raju<span>.</span></a>
-    <nav class="nav-links" id="nav-links">
-      <a href="../index.html">Home</a>
-      <a href="../about.html">About</a>
-      <a href="../career.html">Career</a>
-      <a href="../projects.html">Projects</a>
-      <a href="../viharasetu.html">ViharaSetu</a>
-      <a href="../travel.html">Travel</a>
-      <a href="../trekking.html">Trekking</a>
-      <a href="../life.html">Life</a>
-      <a href="../inspirations.html">My Inspirations</a>
-      <a href="../gallery.html">Gallery</a>
-      <a href="../contact.html">Contact</a>
-      <a href="../resume.html">Resume</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
+<div id="site-header"></div>
+
+<main id="main">
 
 <section class="story-hero">
   <img src="../assets/images/travel/sikkim.jpg" alt="Sikkim mountains and monastery">
   <div class="container story-hero-content">
-    <p class="breadcrumb"><a href="../travel.html">Travel Journal</a> / Sikkim Journey</p>
+    <p class="breadcrumb"><a href="../journal.html#travel">Travel Journal</a> / Sikkim Journey</p>
     <h1>Sikkim Journey</h1>
     <div class="story-meta-bar">
       <span><i class="fa-solid fa-location-dot"></i> Sikkim, India</span>
@@ -134,7 +117,7 @@
   <p>[Your closing reflection on the Sikkim journey.]</p>
 
   <div class="story-nav">
-    <a href="../travel.html" class="prev">
+    <a href="../journal.html#travel" class="prev">
       <span class="story-nav-label"><i class="fa-solid fa-arrow-left"></i> Back to</span>
       <span class="story-nav-title">Travel Journal</span>
     </a>
@@ -146,16 +129,10 @@
 
 </article>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-bottom">
-      <p>&copy; 2026 T Devamani Raju. All rights reserved.</p>
-      <a href="../travel.html">&larr; Back to Travel Journal</a>
-    </div>
-  </div>
-</footer>
+</main>
 
-<script src="../js/data.js"></script>
-<script src="../js/script.js"></script>
+<div id="site-footer"></div>
+
+<script src="../js/main.js"></script>
 </body>
 </html>
