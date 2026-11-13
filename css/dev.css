@@ -447,3 +447,12 @@ html, body { max-width: 100%; overflow-x: clip; }
   .dh-copy h1 { overflow-wrap: anywhere; }
 }
 @media (max-width: 600px) { .cl .tx { flex: 1 1 auto; min-width: 0; } .cl { gap: .7rem; padding-right: .8rem; } }
+
+/* iOS zooms the page when a field under 16px is focused: keep every field at 16px on phones */
+@media (max-width: 700px) {
+  input, textarea, select, #cb-in { font-size: 16px !important; }
+  #cb-panel { left: 12px; right: 12px; width: auto; bottom: 80px; height: min(560px, calc(100dvh - 110px)); max-width: calc(100vw - 24px); }
+  #cb-fab { right: 12px; bottom: 12px; }
+  .cb-m { max-width: 92%; overflow-wrap: anywhere; font-size: .95rem; }
+  #cb-log { overflow-x: hidden; }
+}
