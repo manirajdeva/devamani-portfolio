@@ -23,31 +23,39 @@ const skills = [
 
 /* "Top 10 in Data Engineering" — ranked tools & concepts */
 const topTen = [
-  { id: "t-snowflake", title: "Snowflake", icon: "fa-snowflake", color: "#0e7490", tags: ["Warehouse"], desc: "Cloud data platform — my primary tool for 5+ years." },
-  { id: "t-sql", title: "SQL", icon: "fa-database", color: "#1d4ed8", tags: ["Language"], desc: "The foundation of everything I build." },
-  { id: "t-snowpipe", title: "Snowpipe", icon: "fa-bolt", color: "#7c3aed", tags: ["Ingestion"], desc: "Continuous, event-driven data loading." },
-  { id: "t-streams", title: "Streams & Tasks", icon: "fa-clock-rotate-left", color: "#be123c", tags: ["Automation"], desc: "Change capture and scheduled transformations inside Snowflake." },
-  { id: "t-airflow", title: "Airflow", icon: "fa-wind", color: "#0f766e", tags: ["Orchestration"], desc: "Scheduling and monitoring pipelines as DAGs." },
-  { id: "t-talend", title: "Talend", icon: "fa-shuffle", color: "#b91c1c", tags: ["ETL"], desc: "Jobs, joblets and mappings for dimension/fact loads." },
-  { id: "t-informatica", title: "Informatica", icon: "fa-code-compare", color: "#c2410c", tags: ["ETL", "CDC"], desc: "Change Data Capture to load deltas into the warehouse." },
-  { id: "t-dbt", title: "dbt", icon: "fa-diagram-project", color: "#ea580c", tags: ["Transformation"], desc: "Version-controlled, testable SQL transformations." },
-  { id: "t-s3", title: "AWS S3", icon: "fa-aws", brand: true, color: "#a16207", tags: ["Storage"], desc: "Landing and staging area for upstream files." },
-  { id: "t-tableau", title: "Tableau", icon: "fa-chart-column", color: "#1e40af", tags: ["BI"], desc: "Dashboards for pipeline and business reporting." }
+  { id: "t-snowflake", title: "Snowflake", icon: "fa-snowflake", color: "#0e7490", tags: ["Warehouse"], desc: "Cloud data platform — my primary tool for 5+ years.",
+    paragraphs: ["Snowflake is the cloud data platform at the centre of my work: warehousing, loading, transforming and sharing data in one place.", "I have used it across the Western Asset Management and Truist (Artemis-CPE) projects, from continuous ingestion to performance tuning. SnowPro Core certified."],
+    points: ["SnowSQL and Snowpipe for continuous data ingestion", "COPY for bulk loads from internal and external stages", "Stored procedures and Tasks to schedule transformations", "Redesigned views to improve query performance", "Data sharing between two Snowflake accounts"], related: ["Snowpipe", "Streams & Tasks", "SQL"] },
+  { id: "t-sql", title: "SQL", icon: "fa-database", color: "#1d4ed8", tags: ["Language"], desc: "The foundation of everything I build.",
+    paragraphs: ["SQL is the foundation under every pipeline I build, from simple validations to multi-step transformations.", "On banking projects it carries the business rules themselves: each division's logic lives in stored procedures that can be tested and reasoned about."],
+    points: ["Complex transformations and stored procedures", "Advanced queries feeding downstream reports", "View redesign for faster queries", "Data validation and quality checks for banking reports"], related: ["Snowflake", "Stored Procedures", "Views"] },
+  { id: "t-snowpipe", title: "Snowpipe", icon: "fa-bolt", color: "#7c3aed", tags: ["Ingestion"], desc: "Continuous, event-driven data loading.",
+    paragraphs: ["Snowpipe loads files into Snowflake automatically as they land in a stage, so data arrives continuously without anyone running a manual job.", "I used it for continuous ingestion at Western Asset Management, alongside COPY for larger bulk loads."],
+    points: ["Built Snowpipe for continuous data load", "Worked with internal and external stages", "Transformed data during load", "Used COPY for bulk loading when needed"], related: ["Snowflake", "AWS S3"] },
+  { id: "t-streams", title: "Streams & Tasks", icon: "fa-clock-rotate-left", color: "#be123c", tags: ["Automation"], desc: "Change capture and scheduled transformations inside Snowflake.",
+    paragraphs: ["Streams track changes on a table and Tasks run SQL on a schedule. Together they let Snowflake process only new or changed data, on time, without an outside scheduler.", "On Artemis-CPE I use Tasks to chain stored procedures into repeatable, scheduled pipelines."],
+    points: ["Created and scheduled Snowflake Tasks", "Chained stored procedures into workflows", "Automated recurring transformation jobs", "Debugged stored procedures when results did not match"], related: ["Snowflake", "SQL"] },
+  { id: "t-airflow", title: "Airflow", icon: "fa-wind", color: "#0f766e", tags: ["Orchestration"], desc: "Scheduling and monitoring pipelines as DAGs.",
+    paragraphs: ["Airflow schedules and monitors workflows as DAGs: tasks, dependencies, retries and alerts in a single view.", "I have supported ETL workflows on Airflow, keeping an eye on job health and handling failures."],
+    points: ["Supervised ETL workflows and scheduled jobs", "Monitored failures and retries", "Built job-health dashboards (Intuitive Surgicals)"], related: ["Orchestration", "DAGs"] },
+  { id: "t-talend", title: "Talend", icon: "fa-shuffle", color: "#b91c1c", tags: ["ETL"], desc: "Jobs, joblets and mappings for dimension/fact loads.",
+    paragraphs: ["Talend is an ETL tool for building data integration jobs. I have used it on both of my main projects to move data from upstream systems into Snowflake.", "Reusable joblets and mappings keep dimension and fact loads consistent."],
+    points: ["Converted Talend Joblets to support Snowflake", "Created mappings to populate dimension and fact tables", "Designed Talend jobs to integrate banking source systems (Truist)"], related: ["Snowflake", "ETL"] },
+  { id: "t-informatica", title: "Informatica", icon: "fa-code-compare", color: "#c2410c", tags: ["ETL", "CDC"], desc: "Change Data Capture to load deltas into the warehouse.",
+    paragraphs: ["Informatica is an enterprise ETL platform. Change Data Capture (CDC) finds what changed since the last load, so only the deltas are processed.", "I implemented CDC in Informatica for Western Asset Management."],
+    points: ["Implemented CDC to load deltas into the Data Warehouse", "Used alongside Snowflake and Talend on the same project"], related: ["Talend", "Snowflake"] },
+  { id: "t-dbt", title: "dbt", icon: "fa-diagram-project", color: "#ea580c", tags: ["Transformation"], desc: "Version-controlled, testable SQL transformations.",
+    paragraphs: ["dbt turns SQL SELECT statements into version-controlled, tested transformation models, so analytics logic is reviewed and deployed like code.", "[EDIT] Add the projects where you have used dbt."],
+    points: ["SQL-first modelling", "Tests and documentation alongside the models", "Version control for transformation logic"], related: ["SQL", "Snowflake"] },
+  { id: "t-s3", title: "AWS S3", icon: "fa-aws", brand: true, color: "#a16207", tags: ["Storage"], desc: "Landing and staging area for upstream files.",
+    paragraphs: ["Amazon S3 is AWS object storage, widely used as the landing and staging area for data files.", "In my Snowflake pipelines, upstream files land in S3 staging before they are loaded."],
+    points: ["S3-based staging for Snowflake loads", "External stages pointing at S3", "Cloud-side data movement between systems"], related: ["Snowpipe", "Snowflake"] },
+  { id: "t-tableau", title: "Tableau", icon: "fa-chart-column", color: "#1e40af", tags: ["BI"], desc: "Dashboards for pipeline and business reporting.",
+    paragraphs: ["Tableau is a business-intelligence tool for building interactive dashboards from warehouse data.", "[EDIT] Add the dashboards you built or used."],
+    points: ["Dashboards for pipeline and business reporting"], related: ["Snowflake", "SQL"] }
 ];
 
-/* "Continue Watching" — what I'm working on or learning right now.  [EDIT] */
-const continueWatching = [
-  { id: "cw-viharasetu", title: "Growing ViharaSetu", image: "assets/images/viharasetu/viharasetu-cover.jpg", progress: 35, tags: ["Startup", "Travel"],
-    desc: "Building the brand, packages and community around ViharaSetu — launched 20 Feb 2026." },
-  { id: "cw-dbt", title: "Learning dbt in depth [EDIT]", image: "assets/images/profile/data-engineering.jpg", progress: 55, tags: ["dbt", "Analytics Engineering"],
-    desc: "[EDIT] Add what you are studying: courses, certifications, side projects." },
-  { id: "cw-trek", title: "Planning the next trek [EDIT]", image: "assets/images/profile/hero-mountains.jpg", progress: 20, tags: ["Trekking", "Himalayas"],
-    desc: "[EDIT] Add the next destination and dates." },
-  { id: "cw-snowflake", title: "Advanced Snowflake [EDIT]", image: "assets/images/gallery/project-artemis-cpe.jpg", progress: 70, tags: ["Snowflake", "Certification"],
-    desc: "[EDIT] Next certification or deep-dive topic." }
-];
-
-/* "ViharaSetu Originals" — the founder project, one card per offering */
+/* "ViharaSetu Originals" — the co-founded venture, one card per offering */
 const viharaOriginals = [
   { id: "v-packages", title: "Travel Packages", icon: "fa-suitcase-rolling", image: "assets/images/viharasetu/viharasetu-cover1.jpg", tags: ["Packages", "Curated"],
     desc: "Curated multi-day journeys designed around destinations and experiences, not just logistics." },

@@ -5,37 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ViharaSetu — A Bridge to Your Travel Dreams</title>
 <meta name="description" content="ViharaSetu — a bridge between travelers, destinations, culture and meaningful experiences. Co-founded by T Devamani Raju, Sateesh R and Devi K.">
-<meta name="theme-color" content="#141414">
+<meta name="theme-color" content="#0a0e14">
 <link rel="icon" href="assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261117">
+<link rel="stylesheet" href="css/dev.css?v=20261137">
 </head>
 <body data-page="vihara" data-root="">
 
 <div id="site-header"></div>
 
 <main id="main">
-  <!-- HERO — cross-fading destination slideshow (pure CSS) -->
-  <header class="v-hero">
+  <section class="dv-head vs-head"><div class="dv-wrap vs-grid">
+    <div>
+      <span class="dv-path">~/viharasetu</span>
+      <h1>ViharaSetu</h1>
+      <p>A bridge between travelers, destinations, culture and meaningful experiences. A travel venture I co-founded with two friends on 20 February 2026.</p>
+      <div class="dv-chips static"><span>Est. 2026</span><span>Travel</span><span>Culture</span><span>Trekking</span><span>Heritage</span></div>
+      <div class="vs-cta">
+        <a href="#offer" class="dv-btn pri"><i class="fa-solid fa-compass"></i> What we offer</a>
+        <a href="https://www.viharasetu.co.in" class="dv-btn" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> viharasetu.co.in</a>
+      </div>
+    </div>
+    <img class="v-logo" src="assets/images/viharasetu/viharasetu-logo.png" alt="ViharaSetu — From Aastha to Eternal Anubhav">
+  </div></section>
+  <div class="dv-wrap"><div class="vs-slides" aria-label="ViharaSetu destinations">
     <img class="slide" src="assets/images/viharasetu/viharasetu-cover1.jpg" alt="ViharaSetu destinations">
     <img class="slide" src="assets/images/viharasetu/viharasetu-cover2.jpg" alt="" aria-hidden="true">
     <img class="slide" src="assets/images/viharasetu/viharasetu-cover3.jpg" alt="" aria-hidden="true">
     <img class="slide" src="assets/images/viharasetu/viharasetu-cover4.jpg" alt="" aria-hidden="true">
     <img class="slide" src="assets/images/viharasetu/viharasetu-cover5.jpg" alt="" aria-hidden="true">
-    <div class="hero-content" style="position:relative;z-index:2">
-      <div class="series-tag"><span class="badge" aria-hidden="true">V</span><span>VIHARASETU ORIGINAL</span></div>
-      <h1>ViharaSetu</h1>
-      <div class="meta-line"><span class="match">100% Match</span><span>2026</span><span class="age-badge">ALL</span><span>Travel • Culture • Trekking • Heritage</span></div>
-      <p class="hero-desc">"A bridge between travelers, destinations, culture and meaningful experiences."</p>
-      <div class="hero-actions">
-        <a href="#offer" class="btn btn-play"><i class="fa-solid fa-play"></i> What We Offer</a>
-        <a href="https://viharasetu.co.in" class="btn btn-info" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit viharasetu.co.in</a>
-      </div>
-    </div>
-  </header>
+  </div></div>
 
   <section class="v-section fx">
     <div class="split">
@@ -45,15 +48,101 @@
         <p>Every journey begins with a dream. For us, that dream began with three friends who simply loved to travel.</p>
         <p>We travelled together, explored new places, experienced different cultures, discovered beautiful destinations, and created memories that stayed with us long after we returned home.</p>
         <p>Along the way, we realised something — there are so many people who dream of travelling, but don't know where to start. Some struggle with planning. Some worry about budgets. Some don't know which places to visit. Some want to travel with family. Some dream of a spiritual journey. And some are simply waiting for the right opportunity.</p>
-        <p>So we thought — why not help people turn those dreams into journeys? And that's how <strong style="color:#fff">ViharaSetu</strong> began, on <strong style="color:#fff">20 February 2026</strong>.</p>
+        <p>So we thought — why not help people turn those dreams into journeys? And that's how <strong style="color:var(--text)">ViharaSetu</strong> began, on <strong style="color:var(--text)">20 February 2026</strong>.</p>
       </div>
-      <img src="assets/images/viharasetu/our-story.jpg" alt="ViharaSetu founding story" loading="lazy">
+      <img src="assets/images/viharasetu/viharasetu-cover2.jpg" alt="ViharaSetu founding story" loading="lazy">
     </div>
   </section>
 
   <section class="v-section fx">
     <div class="split">
-      <img src="assets/images/viharasetu/why-viharasetu.jpg" alt="Why ViharaSetu" loading="lazy">
+      <div class="story-anim" role="img" aria-label="Animated line drawing across one day: sunrise over a beach and temple with three friends, people unsure where to start, a bridge built at golden hour, a route to temples and the sea at sunset, and a moonlit finale for ViharaSetu.">
+<svg viewBox="0 0 400 250" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="skyDawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1b4d"/><stop offset=".55" stop-color="#ff8a5c"/><stop offset="1" stop-color="#ffd9a8"/></linearGradient>
+    <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#124f8f"/><stop offset=".6" stop-color="#4f9fe0"/><stop offset="1" stop-color="#b5e2ff"/></linearGradient>
+    <linearGradient id="skyGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a6b"/><stop offset=".55" stop-color="#e8625a"/><stop offset="1" stop-color="#ffbd73"/></linearGradient>
+    <linearGradient id="skyDusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1244"/><stop offset=".55" stop-color="#b3306a"/><stop offset="1" stop-color="#ff7a45"/></linearGradient>
+    <linearGradient id="skyNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070b24"/><stop offset=".6" stop-color="#10224a"/><stop offset="1" stop-color="#24457a"/></linearGradient>
+    <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14566b"/><stop offset="1" stop-color="#08202f"/></linearGradient>
+    <linearGradient id="sandG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0bf8c" stop-opacity=".55"/><stop offset="1" stop-color="#7a5a35" stop-opacity=".6"/></linearGradient>
+    <radialGradient id="glowG"><stop offset="0" stop-color="#fff2c7" stop-opacity=".9"/><stop offset=".4" stop-color="#ffc98a" stop-opacity=".35"/><stop offset="1" stop-color="#ffb36b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></radialGradient>
+  </defs>
+  <!-- sky changes through one day: dawn, day, golden hour, dusk, night -->
+  <rect class="sky k0" width="400" height="170" fill="url(#skyDawn)" stroke="none"/>
+  <rect class="sky k1" width="400" height="170" fill="url(#skyDay)" stroke="none"/>
+  <rect class="sky k2" width="400" height="170" fill="url(#skyGold)" stroke="none"/>
+  <rect class="sky k3" width="400" height="170" fill="url(#skyDusk)" stroke="none"/>
+  <rect class="sky k4" width="400" height="170" fill="url(#skyNight)" stroke="none"/>
+  <g class="stars">
+    <circle cx="40" cy="30" r="1"/><circle cx="90" cy="70" r="1.2"/><circle cx="150" cy="22" r="1"/><circle cx="215" cy="48" r="1.2"/><circle cx="270" cy="20" r="1"/><circle cx="340" cy="60" r="1.2"/><circle cx="370" cy="26" r="1"/>
+  </g>
+  <g class="sun"><circle r="38" fill="url(#glowG)" stroke="none"/><circle class="disc" r="11"/></g>
+  <path class="moon" d="M118 46 a16 16 0 1 0 0 30 a12 12 0 1 1 0 -30 Z"/>
+  <rect x="0" y="165" width="400" height="42" fill="url(#seaG)" stroke="none"/>
+  <path d="M0 165 H400" stroke-opacity=".5"/>
+  <g class="wave w1"><path d="M-80 178 q20 -5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/></g><g class="wave w2"><path d="M-80 187 q20 -5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/></g><g class="wave w3"><path d="M-80 196 q20 -5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/></g>
+  <path d="M0 205 C80 196 160 214 260 203 S360 198 400 204 V250 H0 Z" fill="url(#sandG)" stroke-opacity=".5"/>
+  <path d="M250 166 Q300 150 400 158 V178 Q320 186 250 166 Z" class="land"/>
+
+  <!-- SCENE 1 - sunrise: three friends on the beach, a temple on the headland -->
+  <g class="sc" style="--s:0s">
+    <g transform="translate(318 164) scale(1)"><rect class="dr sil" style="--d:0.20s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:0.35s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:0.50s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:0.65s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:0.80s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:0.90s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:0.70s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g>
+    <g transform="translate(366 166) scale(0.55)"><rect class="dr sil" style="--d:0.90s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:1.05s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:1.20s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:1.35s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:1.50s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:1.60s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:1.40s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g>
+    <g class="bob" style="--b:0.0s"><circle class="dr" style="--d:1.10s" pathLength="1" cx="110" cy="197" r="6"/><path class="dr" style="--d:1.20s" pathLength="1" d="M110 203 V219 M110 219 l-5 10 M110 219 l5 10 M110 211 H162"/></g><g class="bob" style="--b:0.25s"><circle class="dr" style="--d:1.30s" pathLength="1" cx="162" cy="197" r="6"/><path class="dr" style="--d:1.40s" pathLength="1" d="M162 203 V219 M162 219 l-5 10 M162 219 l5 10 M162 211 H214"/></g><g class="bob" style="--b:0.5s"><circle class="dr" style="--d:1.50s" pathLength="1" cx="214" cy="197" r="6"/><path class="dr" style="--d:1.60s" pathLength="1" d="M214 203 V219 M214 219 l-5 10 M214 219 l5 10"/></g>
+    <path class="bird" d="M0 0 q4 -4 8 0 q4 -4 8 0" style="--f:0s"/><path class="bird" d="M0 0 q4 -4 8 0 q4 -4 8 0" style="--f:-2.2s; --y:36px"/>
+    <text x="200" y="240">Three friends who simply loved to travel</text>
+  </g>
+  <!-- SCENE 2 - midday: people dream, but don't know where to start -->
+  <g class="sc" style="--s:4s">
+    <g transform="translate(0 -44)">
+      <circle class="dr" style="--d:.7s" pathLength="1" cx="188" cy="126" r="4"/><circle class="dr" style="--d:.8s" pathLength="1" cx="194" cy="112" r="6"/>
+      <path class="dr cloud" style="--d:.9s" pathLength="1" d="M150 100 C128 100 124 66 152 62 C154 36 196 30 208 50 C226 36 262 48 254 74 C278 82 268 108 244 104 C236 112 160 112 150 100 Z"/>
+      <text class="q" x="200" y="92">?</text>
+    </g>
+    <circle class="dr" style="--d:.3s" pathLength="1" cx="200" cy="197" r="6"/>
+    <path class="dr" style="--d:.4s" pathLength="1" d="M200 203 V219 M200 219 l-5 10 M200 219 l5 10 M200 210 l-10 6 M200 210 l10 6"/>
+    <g class="float" style="--b:0s"><path class="dr" style="--d:1.2s" pathLength="1" d="M62 150 C52 138 48 131 48 126 a14 14 0 0 1 28 0 c0 5 -4 12 -14 24 Z"/><circle class="dr" style="--d:1.3s" pathLength="1" cx="62" cy="126" r="4.5"/></g>
+    <g class="float" style="--b:.4s"><circle class="dr" style="--d:1.4s" pathLength="1" cx="338" cy="118" r="16"/><path class="dr" style="--d:1.5s" pathLength="1" d="M330 111 H346 M330 118 H346 M332 111 C343 111 343 123 332 125 L344 134"/></g>
+    <g transform="translate(110 203) scale(0.55)"><rect class="dr sil" style="--d:1.60s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:1.75s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:1.90s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:2.05s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:2.20s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:2.30s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:2.10s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g>
+    <path class="dr" style="--d:1.9s" pathLength="1" d="M286 207 a14 14 0 0 1 28 0 Z M300 207 V232"/>
+    <path class="bird" d="M0 0 q4 -4 8 0 q4 -4 8 0" style="--f:-1s; --y:30px"/>
+    <text x="200" y="244">...but many don't know where to start</text>
+  </g>
+  <!-- SCENE 3 - golden hour: so we built a bridge -->
+  <g class="sc" style="--s:8s">
+    <path class="dr" style="--d:.1s" pathLength="1" d="M30 176 Q50 160 70 165 M330 165 Q350 160 372 176"/>
+    <path class="dr acc" style="--d:.6s" pathLength="1" d="M70 165 Q200 35 330 165"/>
+    <path class="dr" style="--d:1.2s" pathLength="1" d="M70 165 H330 M105 165 V128 M140 165 V108 M170 165 V99 M200 165 V96 M230 165 V99 M260 165 V108 M295 165 V128"/>
+    <path class="dr" style="--d:1.7s" pathLength="1" d="M70 172 H330" stroke-opacity=".5"/>
+    <g transform="translate(52 166) scale(0.7)"><rect class="dr sil" style="--d:1.90s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:2.05s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:2.20s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:2.35s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:2.50s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:2.60s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:2.40s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g><g transform="translate(350 166) scale(0.7)"><rect class="dr sil" style="--d:2.10s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:2.25s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:2.40s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:2.55s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:2.70s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:2.80s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:2.60s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g>
+    <circle class="trav" r="3"/><circle class="trav t2" r="3"/><circle class="trav t3" r="3"/>
+    <text x="200" y="240">So we built a bridge: ViharaSetu</text>
+  </g>
+  <!-- SCENE 4 - sunset: the route to temples and the sea -->
+  <g class="sc" style="--s:12s">
+    <path class="dr" style="--d:.2s" pathLength="1" d="M40 207 C44 187 48 170 56 150 M56 150 C46 142 36 144 28 152 M56 150 C50 138 60 130 72 130 M56 150 C66 142 78 146 84 156 M56 150 C58 138 52 128 44 124"/>
+    <g transform="translate(318 166) scale(1.25)"><rect class="dr sil" style="--d:0.50s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:0.65s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:0.80s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:0.95s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:1.10s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:1.20s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:1.00s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g>
+    <path class="dr acc" style="--d:1.2s" pathLength="1" d="M70 236 C120 208 150 240 200 214 S290 196 316 170"/>
+    <path class="flow" pathLength="1" d="M70 236 C120 208 150 240 200 214 S290 196 316 170"/>
+    <path class="trail" pathLength="1" d="M20 80 C110 40 210 52 380 24"/>
+    <path class="plane" d="M0 0 l-9 -3.5 l2.4 3.5 l-2.4 3.5 Z"/>
+    <circle class="rider" r="3.6"/>
+    <text x="200" y="244">From dreams to journeys</text>
+  </g>
+  <!-- SCENE 5 - moonlit finale -->
+  <g class="sc" style="--s:16s">
+    <path class="dr" style="--d:.2s" pathLength="1" d="M60 182 H100 L93 190 H67 Z M80 182 V158 L96 178 Z" transform="translate(110 0)"/>
+    <g transform="translate(330 166) scale(1.5)"><rect class="dr sil" style="--d:0.50s" pathLength="1" x="-19" y="-12" width="38" height="12"/><rect class="dr sil" style="--d:0.65s" pathLength="1" x="-15" y="-21" width="30" height="9"/><rect class="dr sil" style="--d:0.80s" pathLength="1" x="-10" y="-29" width="20" height="8"/><rect class="dr sil" style="--d:0.95s" pathLength="1" x="-6" y="-35" width="12" height="6"/><path class="dr" style="--d:1.10s" pathLength="1" d="M-3 -35 L0 -44 L3 -35"/><path class="dr" style="--d:1.20s" pathLength="1" d="M-6 0 V-6 a6 6 0 0 1 12 0 V0"/><path class="dr" style="--d:1.00s" pathLength="1" d="M-12 -12 V-21 M12 -12 V-21 M-6 -21 V-29 M6 -21 V-29"/></g>
+    <rect class="lantern" x="90" y="190" width="7" height="9" rx="1.5"/><rect class="lantern l2" x="150" y="195" width="6" height="8" rx="1.5"/><rect class="lantern l3" x="260" y="192" width="7" height="9" rx="1.5"/>
+    <g class="lg" style="--s:16s"><rect x="173" y="30" width="54" height="54" rx="12" fill="#fff" stroke="none"/><image href="assets/images/viharasetu/viharasetu-logo.png" x="176" y="33" width="48" height="48"/></g>
+    <text class="brand" x="200" y="112">ViharaSetu</text>
+    <text x="200" y="240">From Aastha to Eternal Anubhav</text>
+  </g>
+  <rect width="400" height="250" fill="url(#vig)" stroke="none" pointer-events="none"/>
+  <path class="prog" pathLength="1" d="M20 247.5 H380"/>
+</svg></div>
       <div>
         <span class="eyebrow">WHY VIHARASETU?</span>
         <h2>The Purpose Behind It</h2>
@@ -77,20 +166,20 @@
     <h2>Experiences We're Building</h2>
     <p style="margin-bottom:1.5rem">ViharaSetu is designed around categories of travel that go beyond the ordinary itinerary.</p>
     <div class="offer-grid">
-      <div class="offer"><i class="fa-solid fa-suitcase-rolling"></i><h4>Travel Packages</h4><p>Curated multi-day journeys designed around destinations and experiences, not just logistics.</p></div>
-      <div class="offer"><i class="fa-solid fa-hands-praying"></i><h4>Spiritual Journeys</h4><p>Trips centered around monasteries, temples and places of spiritual significance.</p></div>
-      <div class="offer"><i class="fa-solid fa-masks-theater"></i><h4>Cultural Experiences</h4><p>Immersive experiences with local communities, traditions and ways of life.</p></div>
-      <div class="offer"><i class="fa-solid fa-person-hiking"></i><h4>Trekking &amp; Adventure</h4><p>Guided treks and adventure travel across mountain regions.</p></div>
-      <div class="offer"><i class="fa-solid fa-sliders"></i><h4>Customized Trips</h4><p>Personalized itineraries built around individual travelers' interests and pace.</p></div>
-      <div class="offer"><i class="fa-solid fa-landmark"></i><h4>Heritage Travel</h4><p>Journeys built around history, architecture and heritage sites.</p></div>
-      <div class="offer"><i class="fa-solid fa-map-location-dot"></i><h4>Destination Experiences</h4><p>Deep-dive experiences into a single destination, rather than a rushed multi-city tour.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="1" x="5" y="7" width="14" height="12" rx="2"/><path pathLength="1" d="M9 7V5h6v2M8 19v1.5M16 19v1.5M9 11v4M15 11v4"/></svg><span class="o-dot"></span></div><h4>Travel Packages</h4><p>Curated multi-day journeys designed around destinations and experiences, not just logistics.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M12 19C9 17 8 13 12 7c4 6 3 10 0 12ZM12 19C8 19 5 16 4 12c4 0 6 2 8 7ZM12 19c4 0 7-3 8-7-4 0-6 2-8 7Z"/></svg><span class="o-dot"></span></div><h4>Spiritual Journeys</h4><p>Trips centered around monasteries, temples and places of spiritual significance.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M3.5 5.5h9v6a4.5 4.5 0 0 1-9 0ZM11.5 10.5h9v5a4.5 4.5 0 0 1-9 0Z"/><path pathLength="1" d="M6 9h.01M10 9h.01M14 14h.01M18 14h.01M6 12.5q2 1.8 4 0M14 17.5q2 1.5 4 0"/></svg><span class="o-dot"></span></div><h4>Cultural Experiences</h4><p>Immersive experiences with local communities, traditions and ways of life.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M2 20 9 8l4 6 3-4 6 10Z"/><path pathLength="1" d="M9 8V3.5l3.5 1.5L9 6.5"/></svg><span class="o-dot"></span></div><h4>Trekking &amp; Adventure</h4><p>Guided treks and adventure travel across mountain regions.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M4 7h16M4 12h16M4 17h16"/><circle pathLength="1" cx="9" cy="7" r="2"/><circle pathLength="1" cx="15" cy="12" r="2"/><circle pathLength="1" cx="8" cy="17" r="2"/></svg><span class="o-dot"></span></div><h4>Customized Trips</h4><p>Personalized itineraries built around individual travelers' interests and pace.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M3 9l9-5 9 5ZM5 9v8M9.5 9v8M14.5 9v8M19 9v8M3 20h18M4 17h16"/></svg><span class="o-dot"></span></div><h4>Heritage Travel</h4><p>Journeys built around history, architecture and heritage sites.</p></div>
+      <div class="offer"><div class="o-track" aria-hidden="true"><span class="o-line"></span><svg class="o-ico" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M12 21C7 15 5 12 5 9a7 7 0 0 1 14 0c0 3-2 6-7 12Z"/><circle pathLength="1" cx="12" cy="9" r="2.5"/></svg><span class="o-dot"></span></div><h4>Destination Experiences</h4><p>Deep-dive experiences into a single destination, rather than a rushed multi-city tour.</p></div>
     </div>
   </section>
 
   <section class="v-section fx">
     <div class="split">
       <div>
-        <span class="eyebrow">FOUNDERS' STORY</span>
+        <span class="eyebrow">CO-FOUNDERS' STORY</span>
         <h2>My Connection to ViharaSetu</h2>
         <p>I'm T Devamani Raju, one of the three friends behind ViharaSetu. By profession, I work as a Data Engineer — but travel and trekking have been a constant thread through my life, and ViharaSetu is where that passion, shared with Sateesh R and Devi K, is finding a more structured, intentional form.</p>
         <p>My love for travel has always pulled me toward two things — the quiet stillness of spiritual and heritage places, and the raw, humbling scale of the mountains. There's something about standing before a temple that has outlived generations, or looking up at a peak that makes your problems feel small, that stays with you long after the trip ends. Every such journey has left me a little more grounded, and a little more curious about what else is out there.</p>
@@ -117,14 +206,15 @@
     <span class="eyebrow">GALLERY</span>
     <h2>ViharaSetu in Pictures</h2>
     <div class="gallery3">
-      <img src="assets/images/viharasetu/gallery-1.jpg" alt="ViharaSetu destination" loading="lazy">
-      <img src="assets/images/viharasetu/gallery-2.jpg" alt="ViharaSetu travel" loading="lazy">
-      <img src="assets/images/viharasetu/gallery-3.jpg" alt="ViharaSetu team" loading="lazy">
+      <figure><img src="assets/images/viharasetu/Rishikesh.jpg" alt="Rishikesh" loading="lazy"><figcaption><b>Rishikesh</b><span>Spiritual journeys</span></figcaption></figure>
+      <figure><img src="assets/images/viharasetu/kashi_ghats.jpg" alt="Kashi Ghats" loading="lazy"><figcaption><b>Kashi Ghats</b><span>Varanasi, Uttar Pradesh</span></figcaption></figure>
+      <figure><img src="assets/images/viharasetu/ladak.jpg" alt="Ladakh" loading="lazy"><figcaption><b>Ladakh</b><span>Himalayan adventures</span></figcaption></figure>
+      <figure><img src="assets/images/viharasetu/tajmahal.jpg" alt="Taj Mahal" loading="lazy"><figcaption><b>Taj Mahal</b><span>Heritage travel, Agra</span></figcaption></figure>
     </div>
   </section>
 </main>
 
 <div id="site-footer"></div>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261117"></script>
 </body>
 </html>

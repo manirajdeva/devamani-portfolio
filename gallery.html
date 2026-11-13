@@ -5,27 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery — T Devamani Raju</title>
 <meta name="description" content="Photography and travel photo gallery by T Devamani Raju — street, portrait, macro, landscape, treks and trips.">
-<meta name="theme-color" content="#141414">
+<meta name="theme-color" content="#0a0e14">
 <link rel="icon" href="assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261117">
+<link rel="stylesheet" href="css/dev.css?v=20261137">
 </head>
 <body data-page="gallery" data-root="">
 
 <div id="site-header"></div>
 
 <main id="main">
-  <header class="page-banner" style="background: linear-gradient(180deg, rgba(20,20,20,.5), #141414), linear-gradient(77deg, rgba(0,0,0,.8), rgba(0,0,0,.15)), url('assets/images/profile/hero-mountains.jpg') center / cover">
-    <div>
-      <div class="series-tag"><span class="badge" aria-hidden="true">D</span><span>GALLERY</span></div>
-      <h1>Gallery</h1>
-      <div class="meta-line"><span class="match">98% Match</span><span id="g-total"></span><span class="age-badge">ALL</span><span>Photography • Travel • Trekking • Memories</span></div>
-      <p class="hero-desc">Frames from the street, the mountains and the road — the photography collection, and the photos from trips and treks.</p>
-    </div>
-  </header>
+  <section class="dv-head"><div class="dv-wrap"><span class="dv-path">~/gallery</span><h1>Gallery</h1><p>Frames from the street, the mountains and the road &mdash; the photography collection, and the photos from trips and treks.</p><div class="dv-chips static"><span id="g-total"></span><span>Photography</span><span>Travel</span><span>Memories</span></div></div></section>
 
   <div class="gallery-wrap">
     <!-- Two collections: my photography vs. photos from trips / memories -->
@@ -52,8 +46,17 @@
   <button class="lb-nav next" aria-label="Next photo" data-lb="next"><i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
-<script src="js/data.js"></script>
-<script src="js/content.js"></script>
-<script src="js/main.js"></script>
+<script src="js/data.js?v=20261117"></script>
+<script src="js/content.js?v=20261117"></script>
+<script src="js/main.js?v=20261117"></script>
+<script>window.PQ_QUOTES = [
+    ["You don’t take a photograph, you make it.", "Ansel Adams"],
+    ["When words become unclear, I shall focus with photographs.", "Ansel Adams"],
+    ["There are no rules for good photographs, there are only good photographs.", "Ansel Adams"],
+    ["The camera is an instrument that teaches people how to see without a camera.", "Dorothea Lange"],
+    ["To me, photography is an art of observation.", "Elliott Erwitt"],
+    ["The best camera is the one that’s with you.", "Chase Jarvis"]
+  ];</script>
+<script src="js/quotes.js?v=20261137"></script>
 </body>
 </html>
