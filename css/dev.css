@@ -401,3 +401,49 @@ body.pg-leave { animation: pg-exit .24s ease-in forwards; }
 .vs-slides::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 55%, rgba(6,10,18,.55)); }
 @media (max-width: 760px) { .vs-grid { grid-template-columns: 1fr; } .vs-head .v-logo { order: -1; width: 140px; } }
 @media (prefers-reduced-motion: reduce) { .vs-slides .slide:first-child { opacity: 1; animation: none; } }
+
+/* ---------- chat assistant ---------- */
+#cb-fab { position: fixed; right: 22px; bottom: 22px; z-index: 1500; width: 58px; height: 58px; border-radius: 50%; background: var(--grad); color: #04121c; font-size: 1.35rem; box-shadow: 0 14px 34px rgba(56,189,248,.4); display: grid; place-items: center; transition: transform .35s var(--ease), box-shadow .3s; animation: cb-pop .7s var(--ease) .2s both; }
+#cb-fab:hover { transform: translateY(-4px) scale(1.07); box-shadow: 0 20px 44px rgba(56,189,248,.5); } #cb-fab.on { transform: rotate(90deg) scale(.92); }
+#cb-fab .cb-dot { position: absolute; top: 4px; right: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid #0a0e14; animation: dv-ping 2s infinite; }
+#cb-panel { position: fixed; right: 22px; bottom: 92px; z-index: 1500; width: min(390px, calc(100vw - 28px)); height: min(560px, calc(100vh - 120px)); display: flex; flex-direction: column; background: #0d1420; border: 1px solid var(--line2); border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.6); overflow: hidden;
+  opacity: 0; visibility: hidden; transform: translateY(16px) scale(.96); transform-origin: 100% 100%; transition: opacity .3s, transform .45s var(--ease), visibility .3s; }
+#cb-panel.open { opacity: 1; visibility: visible; transform: none; }
+#cb-panel header { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .9rem 1rem; background: linear-gradient(135deg, rgba(56,189,248,.14), rgba(167,139,250,.1)); border-bottom: 1px solid var(--line); }
+#cb-panel header b { display: block; font: 600 .98rem var(--font-head); color: var(--text); } #cb-panel header small { display: flex; align-items: center; gap: .4rem; font: 500 .7rem var(--mono); color: var(--muted); } #cb-panel header small i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+#cb-x { width: 32px; height: 32px; border-radius: 8px; color: var(--muted); } #cb-x:hover { color: #fff; background: rgba(148,170,205,.14); }
+#cb-log { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: .7rem; scroll-behavior: smooth; }
+.cb-m { max-width: 88%; padding: .65rem .9rem; border-radius: 14px; font-size: .88rem; line-height: 1.55; animation: cb-in .4s var(--ease); }
+.cb-m.bot { align-self: flex-start; background: rgba(148,170,205,.09); border: 1px solid var(--line); color: var(--text); border-bottom-left-radius: 4px; } .cb-m.bot b { color: var(--acc); font-weight: 600; }
+.cb-m.me { align-self: flex-end; background: var(--grad); color: #04121c; font-weight: 500; border-bottom-right-radius: 4px; }
+.cb-m.typing { display: flex; gap: 5px; padding: .85rem 1rem; } .cb-m.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: cb-bounce 1s infinite; } .cb-m.typing i:nth-child(2) { animation-delay: .15s; } .cb-m.typing i:nth-child(3) { animation-delay: .3s; }
+.cb-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; } .cb-links a { font: 500 .74rem var(--mono); color: var(--acc); padding: .25rem .6rem; border: 1px solid rgba(56,189,248,.3); border-radius: 999px; transition: background .2s; } .cb-links a:hover { background: rgba(56,189,248,.14); } .cb-links i { font-size: .65rem; margin-left: .2rem; }
+#cb-chips { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 1rem .7rem; } #cb-chips button { font: 500 .74rem var(--font-body); color: var(--muted); padding: .35rem .7rem; border: 1px solid var(--line2); border-radius: 999px; transition: all .25s; } #cb-chips button:hover { color: #04121c; background: var(--acc); border-color: var(--acc); transform: translateY(-2px); }
+#cb-form { display: flex; gap: .5rem; padding: .7rem; border-top: 1px solid var(--line); background: #0a1019; }
+#cb-in { flex: 1; min-width: 0; background: rgba(148,170,205,.07); border: 1px solid var(--line2); border-radius: 12px; padding: .65rem .9rem; color: var(--text); font: 500 .9rem var(--font-body); } #cb-in:focus { outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px rgba(56,189,248,.18); }
+#cb-form button { width: 42px; border-radius: 12px; background: var(--grad); color: #04121c; transition: transform .25s var(--ease); } #cb-form button:hover { transform: scale(1.08); }
+@keyframes cb-pop { from { opacity: 0; transform: scale(.4) translateY(20px); } } @keyframes cb-in { from { opacity: 0; transform: translateY(8px); } } @keyframes cb-bounce { 50% { transform: translateY(-5px); opacity: .5; } }
+@media (max-width: 520px) { #cb-fab { right: 14px; bottom: 14px; } #cb-panel { right: 14px; bottom: 82px; } }
+@media (prefers-reduced-motion: reduce) { #cb-fab, .cb-m { animation: none; } }
+#cb-fab.on { transform: scale(.92); }
+
+/* ---- mobile fit: nothing wider than the screen, no sideways scroll ---- */
+html, body { max-width: 100%; overflow-x: clip; }
+.dh-hero, .dv-wrap { overflow-x: clip; }
+.dh-grid > *, .dh-copy, .dh-ide { min-width: 0; }
+@media (max-width: 980px) {
+  .dh-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .dh-ide { max-width: 100%; }
+  .dh-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dh-hero::before { width: 120vw; height: 420px; }
+}
+@media (max-width: 600px) {
+  .ide-pane { overflow-x: hidden; }
+  .dh-ide .cl, .dh-ide .tx, .ide-pane pre, .ide-pane code { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
+  .dh-stats > div { padding: 1.1rem 1rem; }
+  .dh-stats b { font-size: 1.8rem; } .dh-stats b.txt { font-size: 1.15rem; padding-top: .45rem; }
+  .dh-stats > div > span { font-size: .72rem; white-space: normal; width: auto; }
+  .dh-stats > div::after { left: 1rem; } .dh-stats > div:hover::after { width: calc(100% - 2rem); }
+  .dh-copy h1 { overflow-wrap: anywhere; }
+}
+@media (max-width: 600px) { .cl .tx { flex: 1 1 auto; min-width: 0; } .cl { gap: .7rem; padding-right: .8rem; } }

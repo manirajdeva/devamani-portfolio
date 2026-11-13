@@ -1064,3 +1064,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   addEventListener("pageshow", e => { if (e.persisted) document.body.classList.remove("pg-leave"); });
 })();
+
+/* 12. CHAT ASSISTANT (js/chat.js) */
+(function () { const s = document.createElement("script"); s.src = ROOT + "js/chat.js?v=20261148"; s.defer = true; document.head.appendChild(s); })();
