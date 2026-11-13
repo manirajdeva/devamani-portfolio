@@ -12,7 +12,7 @@ Anything marked **`[EDIT]`** is placeholder text waiting for your real details.
 index.html            Splash + "Who's watching?" picker + hero + all content rows
 resume.html           Resume styled as a show's "About" page (Seasons, Cast & Crew)
 contact.html          "Ready to watch? Let's connect." email form + FAQ accordion
-viharasetu.html       ViharaSetu founder page
+viharasetu.html       ViharaSetu co-founder page
 stories/              Travel / trekking story pages (+ blank templates)
 inspirations/         My Family, Nims Dai story pages
 css/style.css         The whole design system (numbered sections)

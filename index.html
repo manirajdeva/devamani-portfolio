@@ -3,122 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T Devamani Raju — Data Engineer · Traveler · Trekker</title>
-<meta name="description" content="Portfolio of T Devamani Raju — Data Engineer, traveler, trekker, photographer and co-founder of ViharaSetu.">
-<meta name="theme-color" content="#141414">
-<meta property="og:title" content="T Devamani Raju — Portfolio">
+<title>T Devamani Raju — Software & Data Engineer</title>
+<meta name="description" content="Portfolio of T Devamani Raju — senior software engineer working on data platforms with Snowflake, SQL, Talend and Airflow. Co-founder of ViharaSetu.">
+<meta name="theme-color" content="#0a0e14">
+<meta property="og:title" content="T Devamani Raju — Software & Data Engineer">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/images/profile/hero-mountains.jpg">
 <link rel="icon" href="assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261137">
+<link rel="stylesheet" href="css/dev.css?v=20261137">
 </head>
-<body data-page="home" data-root="">
+<body data-page="devhome" data-root="">
 
-<!-- 1. INTRO SPLASH — plays once per session, click / any key / Skip to dismiss -->
-<div id="splash" role="presentation">
-  <span class="wordmark">DEVAMANI</span>
-  <button class="splash-skip" type="button">Skip intro</button>
-</div>
-
-<!-- 2. WHO'S WATCHING? — profile picker (shown on first visit or via "Switch profile") -->
-<div id="picker" class="hidden" role="dialog" aria-modal="true" aria-labelledby="picker-title">
-  <span class="wordmark">DEVAMANI</span>
-  <h1 id="picker-title">Who's watching?</h1>
-  <div class="profiles">
-    <button class="profile-tile" data-profile="recruiter" type="button">
-      <span class="avatar av-recruiter"><i class="fa-solid fa-briefcase"></i></span>
-      <span class="name">Recruiter</span><span class="sub">Career &amp; Projects first</span>
-    </button>
-    <button class="profile-tile" data-profile="engineer" type="button">
-      <span class="avatar av-engineer"><i class="fa-solid fa-database"></i></span>
-      <span class="name">Data Engineer</span><span class="sub">Skills &amp; Top 10 first</span>
-    </button>
-    <button class="profile-tile" data-profile="traveler" type="button">
-      <span class="avatar av-traveler"><i class="fa-solid fa-mountain-sun"></i></span>
-      <span class="name">Traveler</span><span class="sub">Travel &amp; Trekking first</span>
-    </button>
-    <button class="profile-tile" data-profile="vihara" type="button">
-      <span class="avatar av-vihara"><i class="fa-solid fa-bridge"></i></span>
-      <span class="name">ViharaSetu</span><span class="sub">Originals first</span>
-    </button>
-  </div>
-</div>
-
-<!-- Navbar (injected by js/main.js) -->
 <div id="site-header"></div>
 
-<main id="main">
-  <!-- Search results replace the page content while a query is active -->
-  <section id="results" class="hidden" aria-live="polite"></section>
-
-  <div id="home-main">
-
-    <!-- 4. HERO BILLBOARD
-         To add an optional muted background video, put a <video autoplay muted loop playsinline>
-         inside .hero-bg after the <img> (and keep the <img> as the poster fallback). -->
-    <header class="hero" aria-label="Introduction">
-      <div class="hero-bg">
-        <img src="assets/images/profile/hero-mountains.jpg" alt="Mountain range at sunrise">
-      </div>
-      <div class="hero-content">
-        <div class="series-tag"><span class="badge" aria-hidden="true">D</span><span>PORTFOLIO</span></div>
-        <h1>T Devamani Raju</h1>
-        <div class="meta-line">
-          <span class="match">98% Match</span>
-          <span>2026</span>
-          <span class="age-badge">DE</span>
-          <span>Data Engineer • Traveler • Trekker • Photographer</span>
-        </div>
-        <p class="hero-desc">Building data solutions by profession, exploring the world by passion, and creating meaningful journeys along the way.</p>
-        <div class="hero-actions">
-          <a href="#journey" class="btn btn-play" id="hero-play"><i class="fa-solid fa-play"></i> Play</a>
-          <button type="button" class="btn btn-info" id="hero-info"><i class="fa-solid fa-circle-info"></i> More Info</button>
-        </div>
-      </div>
-    </header>
-
-    <!-- 5. CONTENT ROWS — built by js/main.js from data.js + content.js -->
-    <div id="rows"></div>
-
-    <!-- "One Life, Several Chapters" (Play button lands here) -->
-    <section class="journey fx" id="journey">
-      <span class="eyebrow">THE JOURNEY</span>
-      <h2>One Life, Several Chapters</h2>
-      <p class="lead">My career is one part of my journey. Travel is another. Trekking is another. ViharaSetu is something I am building. This website is where I document all of it.</p>
-      <div class="pillars">
-        <div class="pillar">
-          <i class="fa-solid fa-database" aria-hidden="true"></i>
-          <h3>Data Engineer</h3>
-          <p>Designing scalable data platforms with Snowflake, dbt, Airflow and AWS.</p>
-        </div>
-        <div class="pillar">
-          <i class="fa-solid fa-person-hiking" aria-hidden="true"></i>
-          <h3>Traveler &amp; Trekker</h3>
-          <p>Exploring mountains, cultures and stories — one trip and one trail at a time.</p>
-        </div>
-        <div class="pillar">
-          <i class="fa-solid fa-bridge" aria-hidden="true"></i>
-          <h3>Founder, ViharaSetu</h3>
-          <p>Turning a passion for travel into a bridge between travelers and meaningful experiences.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-</main>
+<main id="main"></main>
 
 <div id="site-footer"></div>
 
-<!-- Detail modal (filled by js/main.js) -->
-<div class="modal-back" id="modal-back">
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
-</div>
-
-<script src="js/data.js"></script>
-<script src="js/content.js"></script>
-<script src="js/main.js"></script>
+<script src="js/data.js?v=20261137"></script>
+<script src="js/content.js?v=20261137"></script>
+<script src="js/main.js?v=20261137"></script>
+<script src="js/dev.js?v=20261137"></script>
 </body>
 </html>

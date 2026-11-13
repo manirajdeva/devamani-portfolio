@@ -5,27 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trekking Diaries — T Devamani Raju</title>
 <meta name="description" content="Trekking diaries by T Devamani Raju — Kedarnath, Sivagange Hills, Netravathi Peak and Z Point.">
-<meta name="theme-color" content="#141414">
+<meta name="theme-color" content="#0a0e14">
 <link rel="icon" href="assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261117">
+<link rel="stylesheet" href="css/dev.css?v=20261137">
 </head>
 <body data-page="trekking" data-root="">
 
 <div id="site-header"></div>
 
 <main id="main">
-  <header class="page-banner" style="background: linear-gradient(180deg, rgba(20,20,20,.5), #141414), linear-gradient(77deg, rgba(0,0,0,.8), rgba(0,0,0,.15)), url('assets/images/profile/hero-mountains.jpg') center / cover">
-    <div>
-      <div class="series-tag"><span class="badge" aria-hidden="true">D</span><span>TREKKING DIARIES</span></div>
-      <h1>Trekking Diaries</h1>
-      <div class="meta-line"><span class="match">99% Match</span><span id="t-count"></span><span class="age-badge">ALL</span><span>Himalayas • Western Ghats • Karnataka Hills</span></div>
-      <p class="hero-desc">Trails, summits and the people I walked them with — one diary per trek.</p>
-    </div>
-  </header>
+  <section class="dv-head"><div class="dv-wrap"><span class="dv-path">~/trekking</span><h1>Trekking Diaries</h1><p>Trails, summits and the people I walked them with &mdash; one diary per trek.</p><div class="dv-chips static"><span id="t-count"></span><span>Himalayas</span><span>Western Ghats</span><span>Karnataka Hills</span></div></div></section>
 
   <!-- Cards are built by js/main.js from trekkingStories in js/data.js -->
   <div class="trek-wrap" id="rows"></div>
@@ -38,8 +32,17 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
 </div>
 
-<script src="js/data.js"></script>
-<script src="js/content.js"></script>
-<script src="js/main.js"></script>
+<script src="js/data.js?v=20261117"></script>
+<script src="js/content.js?v=20261117"></script>
+<script src="js/main.js?v=20261117"></script>
+<script>window.PQ_QUOTES = [
+    ["The mountains are calling and I must go.", "John Muir"],
+    ["It’s not the mountain we conquer, but ourselves.", "Sir Edmund Hillary"],
+    ["In every walk with nature one receives far more than he seeks.", "John Muir"],
+    ["Not all those who wander are lost.", "J.R.R. Tolkien"],
+    ["The journey of a thousand miles begins with a single step.", "Lao Tzu"],
+    ["Climb it so you can see the world, not so the world can see you.", "David McCullough Jr."]
+  ];</script>
+<script src="js/quotes.js?v=20261137"></script>
 </body>
 </html>

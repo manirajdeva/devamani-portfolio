@@ -111,7 +111,7 @@ const careerTimeline = [
     title: "Senior Software Engineer",
     subtitle: "Ibexlabs &middot; Hyderabad",
     summary: "Current role — transforming financial data for Truist Bank's Artemis-CPE platform, serving Credit & Commercial Card and Mortgage business divisions.",
-    tags: ["Snowflake", "Talend", "Stored Procedures", "Banking"],
+    tags: ["Snowflake", "Talend", "Stored Procedures", "Banking", "Best Employee 2025–26"],
     fullDetails: `
       <p><strong>Client:</strong> Truist (Banking &amp; Financial Services)</p>
       <p><strong>Project:</strong> Artemis-CPE</p>
@@ -125,7 +125,7 @@ const careerTimeline = [
         <li>Translated requirements from business divisions such as Credit &amp; Commercial Card and Mortgage into technical transformation logic</li>
         <li>Worked with sensitive financial data, following data security and governance practices appropriate to the banking domain</li>
         <li>Performed data validation and quality checks to ensure accuracy for downstream reporting</li>
-        <li>[Add any specific achievements, metrics or additional responsibilities here.]</li>
+        <li><strong>Best Employee Award (2025–2026)</strong> — recognised as Best Employee at Ibexlabs for the 2025–2026 year</li>
       </ul>
     `
   },
@@ -147,15 +147,15 @@ const careerTimeline = [
    ----------------------------------------------------------------------- */
 const travelStories = [
   {
-    id: "sikkim-journey",
-    title: "Sikkim Journey",
-    location: "Sikkim, India",
-    date: "2026",
+    id: "rajasthan-trip",
+    title: "Rajasthan Trip",
+    location: "Udaipur · Jodhpur · Jaipur, Rajasthan",
+    date: "24 Oct – 2 Nov 2026",
     category: "Travel",
-    tags: ["Travel", "Mountains", "Culture"],
-    image: "assets/images/travel/sikkim.jpg",
-    description: "A journey through mountains, monasteries and beautiful landscapes — my first deep dive into the Eastern Himalayas.",
-    storyPage: "stories/sikkim-journey.html"
+    tags: ["Travel", "Heritage", "Culture", "Rajasthan"],
+    art: "rajasthan", theme: "rajasthan",   /* no photo yet: set image: "assets/images/travel/your-photo.jpg" to use one */
+    description: "Ten days across Rajasthan's three great cities — the lakes of Udaipur, the blue streets and mighty fort of Jodhpur, and the pink palaces of Jaipur.",
+    storyPage: "stories/rajasthan-trip.html"
   }
   // Example of how to add another story:
   // {
@@ -230,6 +230,21 @@ const trekkingStories = [
     image: "assets/images/trekking/trek-zpoint.jpg",
     description: "A grassy, rolling-hills trek in Kudremukh National Park leading up to one of Karnataka's most rewarding viewpoints.",
     storyPage: "stories/z-point-trek.html"
+  },
+  {
+    id: "annapurna-base-camp-trek",
+    title: "Annapurna Base Camp (ABC) Trek",
+    location: "Annapurna Sanctuary, Kaski, Nepal",
+    date: "April 2027",
+    status: "Planned",
+    difficulty: "Moderate",
+    distance: "~110 km (round trip)",
+    duration: "7–10 Days",
+    altitude: "13,550 ft",
+    tags: ["Trekking", "Himalayas", "Nepal", "Planned"],
+    art: "abc", theme: "travel",   /* no photo yet: drawn line-art is used until you add one (set image: "...") */
+    description: "Planned for April 2027: the classic Himalayan trek into the Annapurna Sanctuary — rhododendron forests, terraced villages and a final climb to base camp at 4,130 m, ringed by Annapurna and Machapuchare.",
+    storyPage: "stories/annapurna-base-camp-trek.html"
   }
   // Add more treks below following the same structure.
 ];
@@ -325,7 +340,7 @@ const projects = [
     id: "viharasetu-website",
     title: "ViharaSetu Website",
     client: "Personal Project — ViharaSetu",
-    role: "Web Developer / Founder",
+    role: "Web Developer / Co-Founder",
     duration: "2026",
     image: "assets/images/viharasetu/viharasetu-cover1.jpg",
     tags: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Claude AI"],
