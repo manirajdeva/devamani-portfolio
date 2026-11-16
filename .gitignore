@@ -10,3 +10,7 @@ Devamani raj new Resume.pdf
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Reference project and build tooling (only the built assets/cine output is served)
+viharasetu/
+cinematic/node_modules/
