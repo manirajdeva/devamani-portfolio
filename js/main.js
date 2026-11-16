@@ -1057,12 +1057,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const a = e.target.closest("a[href]");
     if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || a.target || a.hasAttribute("download")) return;
     const u = new URL(a.href, location.href);
-    if (u.origin !== location.origin || (u.pathname === location.pathname && u.hash) || !/\.html$|\/$/.test(u.pathname) || reduceMotion) return;
+    if (u.origin !== location.origin || (u.pathname === location.pathname && u.hash) || !/\.html$|\/$/.test(u.pathname) || reduceMotion || document.documentElement.classList.contains("cine-on")) return;  /* cinematic layer runs its own curtain */
     e.preventDefault();
     document.body.classList.add("pg-leave");
     setTimeout(() => { location.href = a.href; }, 240);
   });
   addEventListener("pageshow", e => { if (e.persisted) document.body.classList.remove("pg-leave"); });
+})();
+
+/* 12a. CINEMATIC LAYER (assets/cine): 3D scene, smooth scroll, page curtain. Falls back to the plain site if it fails to load. */
+(function () {
+  const l = document.createElement("link"); l.rel = "stylesheet"; l.href = ROOT + "assets/cine/cine.css?v=20261203"; document.head.appendChild(l);
+  const s = document.createElement("script"); s.type = "module"; s.src = ROOT + "assets/cine/cine.js?v=20261203"; document.head.appendChild(s);
 })();
 
 /* 12. CHAT ASSISTANT (js/chat.js) */

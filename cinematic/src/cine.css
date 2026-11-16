@@ -1,0 +1,164 @@
+/* Cinematic layer: fixed 3D scene behind every page + home story sections + page curtain.
+   Built by Vite into assets/cine/cine.css. Plain CSS (no framework). */
+
+:root {
+  --ink: #02030a;
+  --cy: #6fe9ff;
+  --az: #4aa3ff;
+  --ice: #d8f8ff;
+  --mist: #8ea3c8;
+  --expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Lenis ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+/* ---------- the scene layer (child of <html>, so page fades never move it) ---------- */
+html.cine-on { background: var(--ink); }
+html.cine-on body { background: transparent; }
+html.cine-on body::before { display: none; }
+#cine-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--ink); }
+#cine-bg canvas { display: block; width: 100%; height: 100%; }
+.cine-scrim { position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, rgba(2,3,10,.5), rgba(2,3,10,.66)); }
+.cine-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 45%, rgba(2,3,10,.75) 100%), linear-gradient(to top, rgba(2,3,10,.8), transparent 22%); }
+.cine-labels { position: absolute; inset: 0; overflow: hidden; }
+.capsule-label { position: absolute; left: 0; top: 0; font: 500 .82rem "Space Grotesk", "Inter", sans-serif; letter-spacing: .04em; color: #e3f7ff; text-shadow: 0 0 12px rgba(111,233,255,.85), 0 0 2px rgba(255,255,255,.6); white-space: nowrap; opacity: 0; will-change: transform, opacity; transition: color .3s, text-shadow .3s; }
+.capsule-label[data-hover="1"] { color: #fff; text-shadow: 0 0 18px rgba(111,233,255,1), 0 0 4px #fff; }
+.cine-brand { position: absolute; left: 0; top: 0; text-align: center; opacity: 0; will-change: transform; }
+.cb-name { font: 500 clamp(1.1rem, 2.4vw, 1.8rem) "Space Grotesk", sans-serif; letter-spacing: .38em; text-transform: uppercase; color: #fff; text-shadow: 0 0 24px rgba(111,233,255,.9), 0 0 2px #fff; }
+.cb-sub { margin-top: .5rem; font: 400 .6rem "JetBrains Mono", monospace; letter-spacing: .4em; text-transform: uppercase; color: rgba(111,233,255,.8); }
+.cine-fallback { position: absolute; inset: 0; background:
+  radial-gradient(circle at 65% 40%, rgba(47,123,255,.32), transparent 55%),
+  radial-gradient(circle at 30% 80%, rgba(111,233,255,.12), transparent 50%), var(--ink); }
+html.capsule-hover .hero-stage { cursor: pointer; }
+
+/* keep the static page content above the scene and let the scene show through */
+#site-header, #main, #site-footer, main, footer { position: relative; }
+html.cine-home #main { isolation: isolate; }
+
+/* ---------- page curtain: thin line sweeps across, panel wipes the page ---------- */
+#cine-curtain { position: fixed; inset: 0; z-index: 3000; pointer-events: none; background: var(--ink); transform: translateY(0); display: grid; place-items: center; }
+#cine-curtain .cc-line { position: absolute; left: 0; top: 50%; height: 1px; width: 100%; background: linear-gradient(90deg, transparent, var(--cy), transparent); transform: scaleX(0); box-shadow: 0 0 18px rgba(111,233,255,.8); }
+#cine-curtain .cc-label { position: relative; top: 22px; font: 500 .7rem "JetBrains Mono", monospace; letter-spacing: .5em; color: rgba(111,233,255,.8); opacity: 0; }
+#cine-curtain.in { pointer-events: all; animation: cc-in .52s var(--expo) both; }
+#cine-curtain.in .cc-line { animation: cc-line .52s var(--expo) both; }
+#cine-curtain.in .cc-label { animation: cc-label .52s var(--expo) both; }
+#cine-curtain.out { animation: cc-out .9s var(--expo) both; }
+#cine-curtain.out .cc-line { animation: cc-line-out .9s var(--expo) both; }
+@keyframes cc-in { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes cc-out { 0% { transform: translateY(0); } 35% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+@keyframes cc-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes cc-line-out { 0% { transform: scaleX(1); opacity: 1; } 35% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes cc-label { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- home story ---------- */
+.cw { width: 100%; max-width: 1680px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+#cine-story { position: relative; z-index: 1; overflow-x: clip; }
+.hero-content { position: relative; z-index: 2; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 6rem; padding-bottom: 2.5rem; }
+.hero-in { max-width: 37rem; }
+.cine-pill { display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.7rem; padding: .4rem 1rem .4rem .5rem; border-radius: 999px; font: 500 .74rem "JetBrains Mono", monospace; letter-spacing: .1em; color: rgba(216,248,255,.92); background: rgba(10,20,50,.4); border: 1px solid rgba(111,233,255,.18); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.cine-pill i { width: 20px; height: 20px; border-radius: 50%; background: rgba(111,233,255,.15); display: grid; place-items: center; }
+.cine-pill i::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cy); box-shadow: 0 0 10px var(--cy); animation: cine-pulse 2.2s ease-in-out infinite; }
+@keyframes cine-pulse { 0%, 100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
+
+.cine-h1, .cine-h2 { font-family: "Space Grotesk", "Inter", sans-serif; font-weight: 400; letter-spacing: -.035em; line-height: 1.02; margin: 0; color: #eaf7ff; }
+.cine-h1 { font-size: clamp(2.75rem, 7.2vw, 7rem); }
+.cine-h2 { font-size: clamp(2.4rem, 6vw, 6rem); }
+.sw { display: inline-block; overflow: hidden; padding: .02em .04em .22em; margin: -.02em -.04em -.22em; vertical-align: bottom; }
+.sw-i { display: inline-block; will-change: transform; background: linear-gradient(180deg, #fff 0%, #d4f1ff 55%, #8cc8ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.accw .sw-i { background: linear-gradient(90deg, #6fe9ff, #4aa3ff 50%, #8f9bff); -webkit-background-clip: text; background-clip: text; }
+
+.cine-lead { margin: 1.5rem 0 0; max-width: 34rem; font-size: clamp(1.02rem, 1.6vw, 1.15rem); line-height: 1.7; color: var(--mist); }
+.cine-lead a { color: var(--cy); border-bottom: 1px dashed rgba(111,233,255,.5); text-decoration: none; }
+.cine-cta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+.cbtn { display: inline-flex; align-items: center; gap: .6rem; height: 3rem; padding: 0 1.4rem; border-radius: 999px; font: 500 .95rem "Inter", sans-serif; text-decoration: none; cursor: pointer; transition: transform .4s var(--expo), box-shadow .4s var(--expo), background .3s, border-color .3s; white-space: nowrap; }
+.cbtn:active { transform: scale(.97); }
+.cbtn.pri { color: #02030a; background: linear-gradient(180deg, #bff4ff, #6fe9ff 40%, #3aa0ff); box-shadow: 0 0 0 1px rgba(191,244,255,.6) inset, 0 10px 30px -8px rgba(74,163,255,.7), 0 0 50px -10px rgba(111,233,255,.7); }
+.cbtn.pri:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(220,250,255,.9) inset, 0 14px 40px -8px rgba(74,163,255,.9), 0 0 70px -6px rgba(111,233,255,.9); }
+.cbtn.gh { color: #dcefff; background: rgba(10,20,50,.35); border: 1px solid rgba(111,233,255,.25); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.cbtn.gh:hover { border-color: rgba(111,233,255,.6); background: rgba(20,40,90,.45); box-shadow: 0 0 30px -8px rgba(111,233,255,.6); transform: translateY(-2px); }
+
+.cglass { position: relative; border-radius: 16px; background: linear-gradient(160deg, rgba(120,170,255,.1), rgba(40,80,200,.03) 42%, rgba(10,20,60,.1)), rgba(6,12,34,.42); border: 1px solid rgba(111,233,255,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(47,123,255,.05), 0 20px 60px -20px rgba(0,0,0,.7), 0 0 40px -12px rgba(47,123,255,.25); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); }
+.cglass.spot { transition: transform .5s var(--expo); will-change: transform; }
+.cglass.spot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(74,163,255,.16), transparent 45%); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.cglass.spot:hover::after { opacity: 1; }
+.cglass.spot:hover { border-color: rgba(111,233,255,.4); }
+
+.cine-cards { margin-top: 3rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; max-width: 62rem; }
+.cine-card { display: block; padding: 1.25rem; text-decoration: none; color: inherit; }
+.cine-card .n { font: 500 .7rem "JetBrains Mono", monospace; letter-spacing: .2em; color: var(--cy); display: flex; justify-content: space-between; align-items: center; }
+.cine-card .n b { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(111,233,255,.22); display: grid; place-items: center; font-weight: 400; color: rgba(111,233,255,.7); transition: all .5s var(--expo); }
+.cine-card:hover .n b { border-color: rgba(111,233,255,.6); color: #fff; box-shadow: 0 0 18px rgba(111,233,255,.6); transform: rotate(45deg); }
+.cine-card h3 { margin: 1rem 0 .45rem; font: 400 1.05rem/1.35 "Space Grotesk", sans-serif; color: #fff; letter-spacing: -.01em; }
+.cine-card p { margin: 0; font-size: .88rem; line-height: 1.6; color: var(--mist); }
+
+.scroll-cue { position: absolute; right: clamp(1rem, 3vw, 2.5rem); bottom: 2rem; z-index: 3; display: flex; align-items: center; gap: .9rem; font: 400 .66rem "JetBrains Mono", monospace; letter-spacing: .3em; text-transform: uppercase; color: var(--mist); background: none; border: 0; cursor: pointer; }
+.scroll-cue span { position: relative; width: 1px; height: 40px; overflow: hidden; background: rgba(255,255,255,.1); }
+.scroll-cue span::after { content: ""; position: absolute; inset: 0 0 50% 0; background: var(--cy); animation: cine-scan 1.8s ease-in-out infinite; }
+@keyframes cine-scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+
+.gate { position: relative; z-index: 2; height: 90vh; display: flex; align-items: center; justify-content: center; padding: 0 1.5rem; }
+.gate p { margin: 0; text-align: center; font: 300 clamp(1.2rem, 2.6vw, 2rem) "Space Grotesk", sans-serif; letter-spacing: -.01em; color: rgba(216,248,255,.82); opacity: 0; }
+.gate small { display: block; margin-top: .8rem; font: 400 .65rem "JetBrains Mono", monospace; letter-spacing: .35em; text-transform: uppercase; color: rgba(111,233,255,.6); }
+
+#about { position: relative; z-index: 2; height: 220vh; }
+#about .stick { position: sticky; top: 0; height: 100svh; display: flex; align-items: center; overflow: hidden; }
+.about-in { max-width: 33rem; }
+.eyebrow-row { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.4rem; }
+.eyebrow-row .no { font: 400 .75rem "JetBrains Mono", monospace; color: rgba(111,233,255,.6); }
+.eyebrow-row .bar { width: 40px; height: 1px; background: linear-gradient(90deg, rgba(111,233,255,.7), transparent); }
+.eyebrow-row .tx { font: 400 .72rem "JetBrains Mono", monospace; letter-spacing: .22em; text-transform: uppercase; color: var(--cy); }
+.about-in .lead { margin: 1.5rem 0 0; font-size: clamp(1.05rem, 1.8vw, 1.3rem); line-height: 1.65; color: rgba(216,248,255,.88); }
+.about-in .body { margin: 1rem 0 0; max-width: 28rem; line-height: 1.7; color: var(--mist); }
+.principles { margin: 1.8rem 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+.principles > div { padding: .85rem 1rem; }
+.principles dt { font: 400 1rem "Space Grotesk", sans-serif; color: #fff; }
+.principles .v { font: 400 .62rem "JetBrains Mono", monospace; letter-spacing: .18em; text-transform: uppercase; color: rgba(111,233,255,.7); margin: 0; }
+.principles .d { margin: .5rem 0 0; font-size: .78rem; line-height: 1.55; color: var(--mist); }
+.about-in .cbtn { margin-top: 2rem; }
+
+/* ---------- profile section re-use on the home page (editor + stats) ---------- */
+.cine-home .dh-cine { padding-top: 5rem; }
+.cine-home .dh-cine .dh-grid { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+.cine-home .dh-cine .dh-ide { transform: none; animation: none; }
+
+/* ---------- inner pages: let the scene show, soften big flat panels ---------- */
+html.cine-on:not(.cine-home) .dv-head, html.cine-on:not(.cine-home) main { position: relative; }
+
+@media (max-width: 900px) {
+  .cine-cards { grid-template-columns: 1fr; max-width: 34rem; }
+  .hero-content { justify-content: flex-end; padding-top: 50svh; }
+  .scroll-cue { display: none; }
+  .principles { grid-template-columns: 1fr; }
+  .principles .d { display: none; }
+  #about .stick { align-items: flex-end; padding-bottom: 2.5rem; }
+  .about-in .body { display: none; }
+  .gate { height: 70vh; }
+  #about { height: 190vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cine-curtain { display: none; }
+  .gate p { opacity: 1; }
+  .sw-i { transform: none !important; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* ---------- full-width layout: use the whole screen, not a 1200px column ---------- */
+html.cine-on .container, html.cine-on .dv-wrap, html.cine-on .dv-bar-in, html.cine-on .dv-foot-in,
+html.cine-on .journey, html.cine-on .gallery-wrap, html.cine-on #rows.trek-wrap, html.cine-on .about-hero { max-width: 1680px; }
+html.cine-on .dv-term { max-width: 1100px; }
+.hero-in { max-width: min(46rem, 100%); }
+.cine-cards { max-width: 80rem; }
+
+/* ---------- smoothness: blurring an animating canvas every frame is the costly part, so drop it here ---------- */
+html.cine-on .dv-bar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(6,9,16,.84); }
+html.cine-on .cglass, html.cine-on .cine-pill, html.cine-on .cbtn.gh { -webkit-backdrop-filter: none; backdrop-filter: none; }
+html.cine-on .cglass { background: linear-gradient(160deg, rgba(120,170,255,.1), rgba(40,80,200,.04) 42%, rgba(10,20,60,.1)), rgba(7,13,32,.72); }
+html.cine-on .cine-pill { background: rgba(10,20,50,.7); }
+html.cine-on .cbtn.gh { background: rgba(10,20,50,.6); }
+#cine-bg canvas { transform: translateZ(0); }
+#hero { position: relative; }
+.cine-home .dh-cine .dh-grid { max-width: 1040px; }

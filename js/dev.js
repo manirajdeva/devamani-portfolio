@@ -226,8 +226,11 @@
 
   function init() {
     var main = $("#main");
+    var cine = document.body.dataset.cine === "home";
+    var profile = heroHTML();
+    if (cine) profile = profile.replace('<section class="dh-hero"><div class="dv-wrap dh-grid">', '<section class="dh-hero dh-cine"><div class="dv-wrap"><header class="dv-sh dv-rv"><span class="dv-path">~/profile.ts</span><h2>The profile</h2><p>The same person, written as code. Click the tabs.</p></header></div><div class="dv-wrap dh-grid">').replace('<div class="dh-copy">', '<div class="dh-copy" hidden>');
     var html = PAGE === "devhome"
-      ? heroHTML() + toolboxHTML() + experienceHTML(3) + projectsHTML() + questsHTML() + contactHTML()
+      ? profile + toolboxHTML() + experienceHTML(3) + projectsHTML() + questsHTML() + contactHTML()
       : workHeadHTML() + experienceHTML() + projectsHTML() + toolboxHTML() + contactHTML();
     main.innerHTML = html;
 

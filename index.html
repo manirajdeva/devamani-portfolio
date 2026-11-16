@@ -16,9 +16,52 @@
 <link rel="stylesheet" href="css/style.css?v=20261148">
 <link rel="stylesheet" href="css/dev.css?v=20261151">
 </head>
-<body data-page="devhome" data-root="">
+<body data-page="devhome" data-root="" data-cine="home">
 
 <div id="site-header"></div>
+
+<!-- Cinematic scroll story: the 3D scene (assets/cine) morphs tree -> cloud -> cube -> waves behind these sections -->
+<div id="cine-story">
+  <section id="hero" class="hero-stage" aria-label="Introduction">
+    <div class="hero-content cw">
+      <div class="hero-in">
+        <div class="cine-pill" data-hero-in><i></i><span>T Devamani Raju · Bengaluru</span></div>
+        <h1 class="cine-h1" data-split>Data that<br>keeps <span class="accw">moving.</span></h1>
+        <p class="cine-lead" data-hero-in>Senior software engineer with 5+ years across Snowflake, SQL, Talend and Airflow &mdash; turning banking data into reliable pipelines at Ibexlabs, and co-founding <a href="https://www.viharasetu.co.in" target="_blank" rel="noopener">ViharaSetu</a> on the side.</p>
+        <div class="cine-cta" data-hero-in>
+          <a class="cbtn pri" href="work.html#projects">View projects <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="cbtn gh" href="resume.html">Resume</a>
+          <a class="cbtn gh" href="contact.html">Let&rsquo;s talk</a>
+        </div>
+      </div>
+      <div class="cine-cards">
+        <a class="cine-card cglass spot" href="#toolbox" data-hero-card><span class="n">01<b><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></b></span><h3>Data engineering</h3><p>Snowflake, SQL, Talend and Airflow &mdash; warehouses and pipelines that recover on their own.</p></a>
+        <a class="cine-card cglass spot" href="viharasetu.html" data-hero-card><span class="n">02<b><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></b></span><h3>Co-founder, ViharaSetu</h3><p>Travel experiences across India, built from the ground up.</p></a>
+        <a class="cine-card cglass spot" href="trekking.html" data-hero-card><span class="n">03<b><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></b></span><h3>Beyond the code</h3><p>Treks, travel and photography between deployments.</p></a>
+      </div>
+    </div>
+    <button type="button" class="scroll-cue" data-hero-in onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Scroll to begin<span></span></button>
+  </section>
+
+  <div id="dissolve" class="gate" aria-hidden="true"><p data-gate-caption>Every pipeline starts as a signal.<small>dissolution &middot; reassembly</small></p></div>
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="stick"><div class="cw"><div class="about-in">
+      <div class="eyebrow-row" data-reveal><span class="no">01</span><span class="bar"></span><span class="tx">About</span></div>
+      <h2 class="cine-h2" id="about-title" data-split>Engineering<br>with <span class="accw">purpose.</span></h2>
+      <p class="lead" data-reveal>Reliable data, thoughtful software, and a habit of finishing what I start &mdash; at work and on the trail.</p>
+      <p class="body" data-reveal>At the centre is one idea: a pipeline should explain itself, recover on its own and be easy for the next person to read. I carry the same mindset into ViharaSetu and into every trek I plan.</p>
+      <dl class="principles">
+        <div class="cglass" data-reveal><dt>Reliable</dt><dd class="v">by design</dd><dd class="d">Pipelines that retry, alert and recover.</dd></div>
+        <div class="cglass" data-reveal><dt>Clear</dt><dd class="v">by default</dd><dd class="d">Documented models anyone can read.</dd></div>
+        <div class="cglass" data-reveal><dt>Curious</dt><dd class="v">always</dd><dd class="d">From warehouses to the Himalayas.</dd></div>
+      </dl>
+      <a class="cbtn gh" href="work.html" data-reveal>See the work <i class="fa-solid fa-arrow-right"></i></a>
+    </div></div></div>
+  </section>
+
+  <div id="wave-gate" class="gate" aria-hidden="true"><p data-gate-caption>&hellip;and flows into the work.<small>pipelines &middot; projects</small></p></div>
+</div>
 
 <main id="main"></main>
 
@@ -26,7 +69,7 @@
 
 <script src="js/data.js?v=20261148"></script>
 <script src="js/content.js?v=20261148"></script>
-<script src="js/main.js?v=20261148"></script>
-<script src="js/dev.js?v=20261148"></script>
+<script src="js/main.js?v=20261203"></script>
+<script src="js/dev.js?v=20261201"></script>
 </body>
 </html>
